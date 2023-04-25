@@ -1,0 +1,16 @@
+@import "variables";
+.login_main_div {
+@include flexCenter;
+  margin-inline: auto;
+justify-content: center;
+}
+
+.login_box {
+  box-sizing: border-box;
+  margin: 1.5rem;
+  padding: 1.5rem;
+  color: $fontSecondaryColor;
+  width: 50rem;
+  height: 30rem;
+  background-color: $btnNavigationColor;
+}

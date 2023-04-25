@@ -1,0 +1,18 @@
+
+$fontExtra: 'Castoro Titling', cursive;
+$fontFalmily: 'Quicksand', sans-serif;
+
+.fnt_extra {
+  font-family: $fontExtra;
+  font-size: 30px;
+  margin: 0;
+}
+
+@mixin familyFont {
+  font-family: $fontFalmily;
+  font-size: 16px;
+}
+
+.fnt {
+  @include familyFont;
+}

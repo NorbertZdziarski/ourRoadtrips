@@ -1,0 +1,154 @@
+@import "variables";
+@import "fonts";
+
+@import "box-style";
+
+
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+}
+@import "login";
+root {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  width: 100%;
+  height: 100vh;
+}
+
+.off {
+  display: none;
+
+}
+
+.main__bgr__img {
+  height: 100vh;
+  background-image: url("../../warehouse/images/slideshow/20221030_121459.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &:after {
+  content: "";
+  position: absolute;
+    left: 0;
+    top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.46);
+}
+}
+
+.column_left {
+  z-index: 10;
+  max-width: $globalMarginWidth;
+  width: 100%;
+}
+
+.column_center {
+  z-index: 10;
+  max-width: $widthColumnCenter;
+  width: 100%;
+  display: block;
+}
+
+.column_right {
+  z-index: 10;
+  max-width: $globalMarginWidth;
+  width: 100%;
+
+}
+
+.btn_main {
+  background-color: rgba(255, 255, 255, 0);
+  width: 5rem;
+  height: 20%;
+}
+.btn_main_lft {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-left: 5rem solid $btnNavigationColor;
+  border-bottom: 5rem solid transparent;
+
+  &:hover {
+    border-left: 5rem solid rgba(255, 255, 255, 0.8);
+  }
+}
+
+.btn_main_rgt {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-right: 5rem solid $btnNavigationColor;
+  border-top: 5rem solid transparent;
+  &:hover {
+    border-right: 5rem solid rgba(255, 255, 255, 0.8);
+  }
+}
+
+.main_header {
+  margin: 1.5rem 0;
+  background-color: $btnNavigationColor;
+  max-width: $widthColumnCenter;
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+
+}
+.header__nav {
+  @include flexCenter;
+  height: 100%;
+}
+.header__logo {
+  @include flexCenter;
+  height: 100%;
+}
+
+
+
+.main__div {
+  @include flexCenter;
+  color:white;
+  justify-content: space-between;
+}
+
+.main_box {
+  margin-top: 7rem;
+  background-color: rgba(0, 47, 41, 0.13);
+}
+
+
+.box-dekor {
+  height: 6rem;
+  @include flexCenter;
+
+  position: absolute;
+  &:before {
+    content: "";
+    width: calc($widthColumnCenter - 1.5rem);
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-left: 1.5rem solid transparent;
+    border-top: 1.5rem solid $btnNavigationColor;
+  }
+  &:after {
+    content: "";
+    width: calc($widthColumnCenter - 1.5rem);
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 1.5rem solid transparent;
+    border-bottom: 1.6rem solid $btnNavigationColor;}
+}

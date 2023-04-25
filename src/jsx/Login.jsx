@@ -1,6 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import UserPanel from "./UserPanel.jsx";
-// import UserPanel from "./jsx/UserPanel.jsx";
+import '../scss/main.scss'
 
 
 function Login() {
@@ -10,6 +10,7 @@ function Login() {
     const [newUser, setNewUser] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+    const [classLogin, setClassLogin] = useState("")
 
 
     useEffect(()=>{
@@ -23,8 +24,6 @@ function Login() {
                 console.log(data);
                 setDatabas(data);
                 console.log('--------')
-
-
             })
             .catch(error => {
                 console.log(error);
@@ -34,10 +33,12 @@ function Login() {
     function handleAddTask() {
         const dane = {
             name: newUser,
-            surname: newPassword
+            surname: newPassword,
+            password: "Haslo",
+            cars: ["Subaru", "Nissan"],
+            trips: []
         }
-        fetch(`${API}/profile
-`
+        fetch(`${API}/profile`
             , {
                 method: "POST"
                 ,
@@ -56,11 +57,15 @@ function Login() {
             });
     }
 
-    const changeData = () => {  // ------------------------------------------------------------------------------------ zmiana - w trakcie pracy
+    const changeData = (id) => {  // ------------------------------------------------------------------------------------ zmiana - w trakcie pracy
+
+
+
         const data = {
-            surname: "Polonezy 3"
+            surname: "Polonezy rere3"
         };
-        fetch(`${API}/profile/${loggedUser.id}`
+        console.log(id)
+        fetch(`${API}/profile/${id}`
             , {
                 method: "PATCH"
                 ,
@@ -79,8 +84,8 @@ function Login() {
             });
     }
 
-
     function checkLogin()  {    // ------------------------------------------------------------------------------------ logowanie
+        setClassLogin((loggedIn ? "" : "off"));
         databas.map((user) => {
             if ((user.name === newUser) && (user.password === newPassword)) {
                 setLoggedUser(user)
@@ -88,8 +93,6 @@ function Login() {
             } else {console.log('błąd')}
         })
     }
-
-
 
 
     const print = () => {
@@ -106,18 +109,17 @@ function Login() {
     //     return cars;
     // }
 
-
-
-
     const inputNewUser = (event) => {
         setNewUser(event.target.value)}
     const inputNewPassword = (event) => {
         setNewPassword(event.target.value)}
 
+
+
     return (
         <>
+        <div className={classLogin}>
             <p> Login </p>
-
             <input
                 type="text"
                 className="box_input"
@@ -139,14 +141,18 @@ function Login() {
             <button onClick={print}>klik</button>
             <p>User name: {loggedUser.name}</p>
             <p>User surname: {loggedUser.surname}</p>
-            <button onClick={changeData}>zmiana</button>
+
+            <button onClick={() => changeData(loggedUser.id)}>zmiana</button>
+
             <p>User id: {loggedUser.id}</p>
-
+        </div>
             {loggedIn ? (<UserPanel
-            userName={loggedUser.name}
-            userSurname={loggedUser.surname}
+                userName = {loggedUser.name}
+                userSurname = {loggedUser.surname}
+                userCars = {loggedUser.cars}
+                usersId={loggedUser.id}
+                API = {API}
             />) : null }
-
         </>
     )
 }
