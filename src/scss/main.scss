@@ -28,6 +28,25 @@ html {
 
 }
 
+.list_main {
+  background-color: $btnNavigationColor;
+  display: block;
+  margin: 0.1rem;
+  width: 100%;
+}
+.list_item {
+  display: flex;
+  justify-content: space-between;
+  background-color: $btnNavigationColor;
+  margin: 0.2rem;
+}
+.columns {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 0, 0.09);
+  padding: 0 1rem;
+}
+
 .main__bgr__img {
   height: 100vh;
   background-image: url("../../warehouse/images/slideshow/20221030_121459.jpg");
