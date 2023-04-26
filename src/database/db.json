@@ -2,6 +2,7 @@
   "profile": [
     {
       "name": "Ala",
+      "nick": "a1",
       "surname": "Polonezy 3",
       "password": "Haslo",
       "cars": [
@@ -12,6 +13,7 @@
     },
     {
       "name": "Stefan",
+      "nick": "a2",
       "surname": "Lepszy",
       "password": "Haslo",
       "cars": [
@@ -23,6 +25,7 @@
     },
     {
       "name": "Olo",
+      "nick": "a3",
       "surname": "Polonezy 3",
       "password": "Haslo",
       "cars": [
@@ -34,6 +37,7 @@
     },
     {
       "name": "Franek",
+      "nick": "a4",
       "surname": "ssssssssssss1111111111111111",
       "password": "Haslo",
       "cars": [
@@ -45,6 +49,7 @@
     },
     {
       "name": "3333",
+      "nick": "a5",
       "surname": "3434343",
       "password": "Haslo",
       "cars": [],
@@ -53,6 +58,7 @@
     },
     {
       "name": "Alleluja",
+      "nick": "a6",
       "surname": "i do przodu",
       "password": "Haslo",
       "cars": [],
@@ -61,6 +67,7 @@
     },
     {
       "name": "Koza",
+      "nick": "a7",
       "surname": "Nostra",
       "password": "Haslo",
       "cars": [
@@ -71,16 +78,20 @@
     },
     {
       "name": "Ola",
-      "surname": "Polonezy 3",
+      "nick": "a8",
+      "surname": "Kowalska",
       "password": "Haslo",
       "cars": [
-        "Kia, Ford"
+        "Kia",
+        "Ford",
+        "Fiat"
       ],
       "trips": [],
       "id": 8
     },
     {
       "name": "Ala",
+      "nick": "a9",
       "surname": "Klementyna",
       "password": "Haslo",
       "cars": [
@@ -91,6 +102,7 @@
     },
     {
       "name": "Alfreda",
+      "nick": "b1",
       "surname": "Zastara",
       "password": "Haslo",
       "cars": [
@@ -103,6 +115,7 @@
     },
     {
       "name": "Ala",
+      "nick": "b2",
       "surname": "Falista",
       "password": "Haslo",
       "cars": [],
@@ -111,6 +124,7 @@
     },
     {
       "name": "Fanfaron",
+      "nick": "b3",
       "surname": "Wielki",
       "password": "Haslo",
       "cars": [],
@@ -119,6 +133,7 @@
     },
     {
       "name": "Franek",
+      "nick": "a1333",
       "surname": "Mały",
       "password": "Haslo",
       "cars": [],
@@ -127,6 +142,7 @@
     },
     {
       "name": "Tomasz",
+      "nick": "Wspaniały",
       "surname": "Polonezy 3",
       "password": "Haslo",
       "cars": [
@@ -135,6 +151,60 @@
       ],
       "trips": [],
       "id": 14
+    },
+    {
+      "name": "Hello",
+      "nick": "",
+      "surname": "",
+      "password": "",
+      "cars": [],
+      "trips": [],
+      "id": 15
+    },
+    {
+      "name": "Holesław",
+      "nick": "houk",
+      "surname": "Holowy",
+      "password": "Haslo",
+      "cars": [],
+      "trips": [],
+      "id": 16
+    },
+    {
+      "name": "Bolesław",
+      "nick": "houk1",
+      "surname": "Holowy",
+      "password": "Haslo",
+      "cars": [],
+      "trips": [],
+      "id": 17
+    },
+    {
+      "name": "Holesław",
+      "nick": "houk1",
+      "surname": "Alkoholowy",
+      "password": "Haslo",
+      "cars": [],
+      "trips": [],
+      "id": 18
+    },
+    {
+      "name": "Burczymucha",
+      "nick": "Staszek",
+      "surname": "Alejaja",
+      "password": "H",
+      "cars": [],
+      "trips": [],
+      "id": 19
+    },
+    {
+      "name": "Trzeci",
+      "nick": "Staszek",
+      "surname": "Wielki",
+      "password": "H",
+      "cars": [],
+      "trips": [],
+      "id": 20
     }
   ]
 }

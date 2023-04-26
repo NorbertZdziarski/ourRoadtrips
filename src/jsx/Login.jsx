@@ -3,8 +3,8 @@ import UserPanel from "./UserPanel.jsx";
 import '../scss/main.scss'
 
 
-function Login() {
-    const API = "http://localhost:3022";
+function Login({API}) {
+
     const [databas, setDatabas] = useState([]);
     const [loggedUser, setLoggedUser]  = useState('')
     const [newUser, setNewUser] = useState('');
@@ -137,22 +137,24 @@ function Login() {
                 placeholder='enter the password'
             />
             <button onClick={checkLogin}>Login</button>
-            <button onClick={handleAddTask}>save</button>
-            <button onClick={print}>klik</button>
-            <p>User name: {loggedUser.name}</p>
-            <p>User surname: {loggedUser.surname}</p>
+            {/*<button onClick={handleAddTask}>save</button>*/}
+            {/*<button onClick={print}>klik</button>*/}
+            {/*<p>User name: {loggedUser.name}</p>*/}
+            {/*<p>User surname: {loggedUser.surname}</p>*/}
 
-            <button onClick={() => changeData(loggedUser.id)}>zmiana</button>
+            {/*<button onClick={() => changeData(loggedUser.id)}>zmiana</button>*/}
 
-            <p>User id: {loggedUser.id}</p>
+            {/*<p>User id: {loggedUser.id}</p>*/}
         </div>
             {loggedIn ? (<UserPanel
                 userName = {loggedUser.name}
                 userSurname = {loggedUser.surname}
                 userCars = {loggedUser.cars}
+                userTrips = {loggedUser.trips}
                 usersId={loggedUser.id}
                 API = {API}
             />) : null }
+
         </>
     )
 }

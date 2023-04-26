@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function EditUser({userName, userSurname, userId, API}) {
+function EditUser({userName, userSurname, userId, API, setLoggedIn}) {
 
     const [newName, setNewName] = useState("")
     const [newSurname, setNewSurname] = useState("")
@@ -30,6 +30,7 @@ function EditUser({userName, userSurname, userId, API}) {
             .catch(error => {
                 console.log(error);
             });
+        setLoggedIn(false)
     }
 
     const inputNewName = (event) => {

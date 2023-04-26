@@ -1,8 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import Login from "./jsx/Login.jsx";
+import NewAccount from "./jsx/NewAccount.jsx";
+import UserPanel from "./jsx/UserPanel.jsx";
+
+
+
 
 
 function App() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const API = "http://localhost:3022";
 
 
     return (
@@ -20,9 +27,7 @@ function App() {
                     </div>
 
                     <main className="main_box fnt_extra" id="main" >
-                        <Login/>
-
-
+                        {loggedIn ? <NewAccount API={API} setLoggedIn={setLoggedIn}/> : <Login API={API}/> }
                     </main>
                 </div>
 
