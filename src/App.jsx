@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Login from "./jsx/Login.jsx";
 import NewAccount from "./jsx/NewAccount.jsx";
-import UserPanel from "./jsx/UserPanel.jsx";
-
-
 
 
 
@@ -13,10 +10,9 @@ function App() {
 
 
     return (
-        <>
             <div className="main__div main__bgr__img">
                 <div className="column_left">
-                    <button className="btn_main btn_main_lft">left</button>
+                    <button className="btn_main btn_main_lft"></button>
                 </div>
                 <div className="column_center">
                     <div className="box-dekor">
@@ -34,13 +30,10 @@ function App() {
 
 
                 <div className="column_right">
-                    <button className="btn_main btn_main_rgt">right</button>
+                    <button className="btn_main btn_main_rgt"></button>
                 </div>
             </div>
 
-
-
-        </>
     )
 }
 export default App;

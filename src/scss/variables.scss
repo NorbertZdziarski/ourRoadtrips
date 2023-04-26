@@ -1,6 +1,8 @@
 $globalMarginWidth: 120px;
+$cornerCut: 20px;
 
 $widthColumnCenter: calc(100% - ($globalMarginWidth * 2));
 
-$btnNavigationColor: rgba(208, 208, 208, 0.6);
-$fontSecondaryColor: rgba(0,0,0,1)
+$btnNavigationColor: rgba(243, 243, 243, 0.6);
+$bgrPanelColor: rgba(245, 245, 245, 0.8);
+$fontSecondaryColor: rgb(243, 243, 243)

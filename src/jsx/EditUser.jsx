@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function EditUser({userName, userSurname, userId, API, setLoggedIn}) {
+function EditUser({userName, userSurname, userId, API, setLoggedIn, setUserSurname, setUserName}) {
 
     const [newName, setNewName] = useState("")
     const [newSurname, setNewSurname] = useState("")
@@ -24,7 +24,8 @@ function EditUser({userName, userSurname, userId, API, setLoggedIn}) {
             })
             .then(response => response.json())
             .then(data => {
-                // setLoggedUser(data);
+                setUserName(newName)
+                setUserSurname(newSurname)
                 console.log(data);
             })
             .catch(error => {

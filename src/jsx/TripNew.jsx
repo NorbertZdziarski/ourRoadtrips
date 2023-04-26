@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function TripNew({userId, userCars}) {
+function TripNew({userId, API, userCars, userTrips, setAddTrip}) {
     const [newTripName, setNewTripName] = useState('');
     const [newTripDescription, setNewTripDescription] = useState('');
     const [newTripType, setNewTripType] = useState('');
@@ -13,45 +13,42 @@ function TripNew({userId, userCars}) {
     //
     // }
 
-    function handleAddTrip() {
+    function handleAddTrip(userId, userTrips) {
         // if (newPassword === newPasswordChk) {
-        //     const dane = {
-        //         name: newName,
-        //         nick: newNick,
-        //         surname: newSurname,
-        //         password: newPassword,
-        //         cars: [],
-        //         trips: []
-        //     }
-        //     fetch(`${API}/profile`
-        //         , {
-        //             method: "POST"
-        //             ,
-        //             body: JSON.stringify(dane),
-        //             headers: {
-        //                 "Content-Type": "application/json"
-        //             }
-        //         })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //
-        //             console.log(data);
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         });
+            const addNewTrip = {
+                tripName: newTripName,
+                tripDescription: newTripDescription ,
+                tripType: newTripType,
+                tripCountry: newTripCountry,
+                tripCar: newTripCar,
+                tripPhoto: newTripPhoto
+            }
+
+            userTrips.push(addNewTrip)
+            const saveNewTrip = {
+                    "trips" : userTrips
+            }
+
+            fetch(`${API}/profile/${userId}`
+                , {
+                    method: "PATCH"
+                    ,
+                    body: JSON.stringify(saveNewTrip),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         // }
+        setAddTrip(false);
     }
 
-
-    // const inputNewTripName = (event) => {
-    //     setNewTripName(event.target.value)}
-    // const inputNewDescription = (event) => {
-    //     setNewDescription(event.target.value)}
-    // const inputNewPassword = (event) => {
-    //     setNewPassword(event.target.value)}
-    // const inputNewPasswordChk = (event) => {
-    //     setNewPasswordChk(event.target.value)}
     return (
         <div className="newAccount_main">
             <div>
@@ -123,10 +120,7 @@ function TripNew({userId, userCars}) {
                     {/*/>*/}
                 </label>
             </div>
-
-
-
-            <button onClick={handleAddTrip}>SAVE</button>
+        <button onClick={() => handleAddTrip(userId, userTrips)}>SAVE</button>
 
         </div>
     );

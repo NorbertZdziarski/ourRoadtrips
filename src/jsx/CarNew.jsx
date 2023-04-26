@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 
-function CarNew({user}) {
+function CarNew({userId, API, userCars, setAddCar}) {
     const [newCarBrand, setNewCarBrand] = useState('');
     const [newCarName, setNewCarName] = useState('');
     const [newCarEngineFuel, setNewCarEngineFuel] = useState('');
     const [newCarEnginePower, setNewEnginePower] = useState('');
-    const [newCarDescription, setNewDescription] = useState('');
+    const [newCarDescription, setNewCarDescription] = useState('');
+    const [newCarType, setNewCarType] = useState('');
     const [newCarPhoto, setNewPhoto] = useState('');
 
 
@@ -13,50 +14,48 @@ function CarNew({user}) {
     //
     // }
 
-    function handleAddCar() {
-        // if (newPassword === newPasswordChk) {
-        //     const dane = {
-        //         name: newName,
-        //         nick: newNick,
-        //         surname: newSurname,
-        //         password: newPassword,
-        //         cars: [],
-        //         trips: []
-        //     }
-        //     fetch(`${API}/profile`
-        //         , {
-        //             method: "POST"
-        //             ,
-        //             body: JSON.stringify(dane),
-        //             headers: {
-        //                 "Content-Type": "application/json"
-        //             }
-        //         })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //
-        //             console.log(data);
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         });
-        // }
-    }
+    function handleAddCar(userId, userCars) {
 
+            // if (newPassword === newPasswordChk) {
+                const addNewCar = {
+                    carName: newCarName,
+                    carBrand: newCarBrand,
+                    carType: newCarType,
+                    tripType: newCarEngineFuel,
+                    tripCountry: newCarEnginePower,
+                    carDescription: newCarDescription ,
+                    tripPhoto: newCarPhoto
+                }
 
+                userCars.push(addNewCar)
+                const saveNewCar = {
+                    "cars" : userCars
+                }
 
-    const inputNewTripName = (event) => {
-        setNewTripName(event.target.value)}
-    const inputNewDescription = (event) => {
-        setNewDescription(event.target.value)}
-    const inputNewPassword = (event) => {
-        setNewPassword(event.target.value)}
-    const inputNewPasswordChk = (event) => {
-        setNewPasswordChk(event.target.value)}
+                fetch(`${API}/profile/${userId}`
+                , {
+                    method: "PATCH"
+                    ,
+                    body: JSON.stringify(saveNewCar),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            // }
+            setAddCar(false);
+        }
+
     return (
         <div className="newAccount_main">
             <div>
-                <h2>Dodaj swoją wyprawę</h2>
+                <h2>Dodaj swoją furę</h2>
                 <p>wypełnij pola zonaczone *</p>
             </div>
             <div>
@@ -66,7 +65,7 @@ function CarNew({user}) {
                         type="text"
                         className="box_input"
                         value={newCarBrand}
-                        // onChange={inputNewTripName}
+                        onChange={((event) => setNewCarBrand(event.target.value))}
                         placeholder='>>>'
                     />
                 </label>
@@ -78,7 +77,7 @@ function CarNew({user}) {
                         type="text"
                         className="box_input"
                         value={newCarName}
-                        // onChange={inputNewTripName}
+                        onChange={((event) => setNewCarName(event.target.value))}
                         placeholder='>>>'
                     />
                 </label>
@@ -128,11 +127,11 @@ function CarNew({user}) {
 
                 </label>
             </div>
-            <button onClick={handleAddCar}>SAVE</button>
+            <button onClick={() => handleAddCar(userId, userCars)}>SAVE</button>
 
         </div>
     );
 }
-}
+
 
 export default CarNew;

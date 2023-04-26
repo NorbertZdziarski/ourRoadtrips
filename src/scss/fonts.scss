@@ -15,4 +15,5 @@ $fontFalmily: 'Quicksand', sans-serif;
 
 .fnt {
   @include familyFont;
+  color: #242424;
 }

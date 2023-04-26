@@ -1,6 +1,5 @@
 @import "variables";
 @import "fonts";
-
 @import "box-style";
 
 
@@ -21,12 +20,13 @@ html {
   font-size: 10px;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 }
 
 .off {
   display: none;
-
 }
+
 
 .list_main {
   background-color: $btnNavigationColor;
@@ -48,7 +48,9 @@ html {
 }
 
 .main__bgr__img {
+
   height: 100vh;
+  background-attachment: fixed;
   background-image: url("../../warehouse/images/slideshow/20221030_121459.jpg");
   background-size: cover;
   background-position: center;
@@ -63,7 +65,9 @@ html {
   background-color: rgba(0, 0, 0, 0.46);
 }
 }
+.newAccount_main {
 
+}
 .column_left {
   z-index: 10;
   max-width: $globalMarginWidth;
@@ -71,10 +75,13 @@ html {
 }
 
 .column_center {
+
   z-index: 10;
   max-width: $widthColumnCenter;
   width: 100%;
   display: block;
+  //background-color: rgba(0, 0, 0, 0.4);
+  position: relative;
 }
 
 .column_right {
@@ -86,16 +93,29 @@ html {
 
 .btn_main {
   background-color: rgba(255, 255, 255, 0);
-  width: 5rem;
+  width: 10rem;
   height: 20%;
 }
 .btn_main_lft {
   position: absolute;
   left: 0;
   top: 0;
+  border-right: 0;
   border-left: 5rem solid $btnNavigationColor;
   border-bottom: 5rem solid transparent;
+  &:after {
+    position: absolute;
+    content: "";
+    z-index: 20;
+    left: -60%;
+    top: 45%;
+    rotate: 45deg;
+    width: 3rem;
+    height: 3rem;
+    border-left: 4px solid black;
+    border-bottom: 4px solid black;
 
+  }
   &:hover {
     border-left: 5rem solid rgba(255, 255, 255, 0.8);
   }
@@ -105,8 +125,20 @@ html {
   position: absolute;
   right: 0;
   bottom: 0;
+  border-left: 0;
   border-right: 5rem solid $btnNavigationColor;
   border-top: 5rem solid transparent;
+  &:after {
+    position: absolute;
+    content: "";
+    z-index: 20;
+    right: -60%;
+    bottom: 45%;
+    rotate: 45deg;
+    width: 3rem;
+    height: 3rem;
+    border-right: 4px solid black;
+    border-top: 4px solid black;}
   &:hover {
     border-right: 5rem solid rgba(255, 255, 255, 0.8);
   }
@@ -123,6 +155,40 @@ html {
   padding-left: 1rem;
 
 }
+
+@mixin button {
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(0, 0, 0, 0);
+  background-size: 2.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  &:hover {
+    border-radius: 50%;
+    background-color: white;
+  }
+}
+.mainMenu__button {
+  @include button;
+  background-image: url("../../warehouse/images/ico/2931178_change_edit_pencil_creative_design_icon.svg");
+ margin: 0 0 0 .5rem;
+}
+.button__zobacz {
+  @include button;
+  background-image: url("../../warehouse/images/ico/2931189_door_enter_exit_in_leave_icon.svg");
+  margin: 0 0 0 .5rem;
+}
+.button__like {
+  @include button;
+  background-image: url("../../warehouse/images/ico/2931154_bookmark_favorite_rank_rating_star_icon.svg");
+  margin: 0 0 0 .5rem;
+}
+
+
+.mainMenu__section {
+ padding-top: 3rem;
+}
 .header__nav {
   @include flexCenter;
   height: 100%;
@@ -131,13 +197,24 @@ html {
   @include flexCenter;
   height: 100%;
 }
-
+.mainMenu__user {
+  color: #d06c00;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 150px;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+}
 
 
 .main__div {
   @include flexCenter;
   color:white;
   justify-content: space-between;
+  align-items: start;
+  overflow: hidden;
 }
 
 .main_box {
@@ -146,28 +223,23 @@ html {
 }
 
 
+
 .box-dekor {
+
+
+  top: 0;
+  left: 0;
   height: 6rem;
   @include flexCenter;
+  @include boxDecor(calc(100% - 16px), $btnNavigationColor);
 
-  position: absolute;
-  &:before {
-    content: "";
-    width: calc($widthColumnCenter - 1.5rem);
-    height: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-left: 1.5rem solid transparent;
-    border-top: 1.5rem solid $btnNavigationColor;
-  }
-  &:after {
-    content: "";
-    width: calc($widthColumnCenter - 1.5rem);
-    height: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-right: 1.5rem solid transparent;
-    border-bottom: 1.6rem solid $btnNavigationColor;}
+
+}
+
+.mainPageStyle {
+  display: flex;
+  //flex-direction: column;
+  align-items: first;
+  justify-content: start;
+  flex-wrap: wrap;
 }

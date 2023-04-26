@@ -3,15 +3,17 @@
 import EditUser from "./EditUser.jsx";
 import {useState} from "react";
 import TripNew from "./TripNew.jsx";
+import CarNew from "./CarNew.jsx";
 
 
-function UserPanel({userName, userSurname, userCars, userTrips, usersId, API}) {
+function UserPanel({userName, userSurname, userCars, userTrips, usersId, API, setLoggedIn, setUserName, setUserSurname}) {
 
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedInUser, setLoggedInUser] = useState(false);
     const [addTrip, setAddTrip] = useState(false);
+    const [addCar, setAddCar] = useState(false);
 
     function printTrips(trip, i) {   //-------------------------------------wyswietlanie tras
-        return <div key={i} className="list_item">{trip}
+        return <div key={i} className="list_item">{trip.tripName}
         <button>Edit</button>
         </div>
     }
@@ -30,7 +32,8 @@ function UserPanel({userName, userSurname, userCars, userTrips, usersId, API}) {
                 <h4> {userName}, {userSurname}</h4>
 
                 </div>
-                <button onClick={() => setLoggedIn(true)}>edytuj swój profil</button>
+                <button onClick={() => setLoggedInUser(true)}>edytuj swój profil</button>
+                <button onClick={() => setLoggedIn(false)}>  Main Page </button>
             </section>
             <section className="columns">
                 <div className="list_main">
@@ -41,23 +44,32 @@ function UserPanel({userName, userSurname, userCars, userTrips, usersId, API}) {
                 <div className="list_main">
                     <p>Twoje auta:</p>
                     {userCars.map((car, i) => printCars(car, i))}
-                    <button>Dodaj</button>
+                    <button onClick={() => setAddCar(true)}>Dodaj</button>
                 </div>
             </section>
 
-            {loggedIn ? (<EditUser
+            {loggedInUser ? (<EditUser
                 userName = {userName}
                 userSurname = {userSurname}
                 userId = {usersId}
                 API = {API}
-                setLoggedIn = {setLoggedIn}
+                setUserName = {setUserName}
+                setUserSurname = {setUserSurname}
+                setLoggedIn = {setLoggedInUser}
             />) : null }
             {addTrip ? (<TripNew
                 userId = {usersId}
                 API = {API}
+                userCars = {userCars}
+                userTrips = {userTrips}
                 setAddTrip = {setAddTrip}
             />) : null }
-
+            {addCar ? (<CarNew
+                userId = {usersId}
+                API = {API}
+                userCars = {userCars}
+                setAddCar = {setAddCar}
+            />) : null }
 
 
 

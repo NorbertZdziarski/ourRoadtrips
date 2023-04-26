@@ -1,13 +1,42 @@
 @import "variables";
 .box {
-  background-color: yellowgreen;
+  background-color: $btnNavigationColor;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  height: auto;
+  overflow-y: scroll;
 }
 .box-top {
 
 }
-
+@mixin boxDecor($width, $height, $color: $bgrPanelColor) {
+  background-color: $color;
+  width: $width;
+  height: $height;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin: .2rem auto calc($cornerCut * 3);
+  position: relative;
+  &:before {
+    content: "";
+    width: calc(100% - $cornerCut);
+    position: absolute;
+    bottom: -$cornerCut;
+    right: 0;
+    border-left: $cornerCut solid transparent;
+    border-top: $cornerCut solid $color;
+  }
+  &:after {
+    content: "";
+    width: calc(100% - $cornerCut);
+    position: absolute;
+    top: -$cornerCut;
+    left: 0;
+    border-right: $cornerCut solid transparent;
+    border-bottom: $cornerCut solid $color;}
+}
 .box-content {
-
+ @include boxDecor(490px, 250px)
 }
 
 .box-bottom {
@@ -15,8 +44,9 @@
 }
 
 .box_input {
+  font-size: 1.8rem;
   width: 46rem;
-  height: 2rem;
+  height: 3rem;
   background-color: white;
   border: 1px solid black;
   padding: 2px;

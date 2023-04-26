@@ -1,14 +1,47 @@
 {
   "profile": [
     {
-      "name": "Ala",
+      "name": "Kleofas",
       "nick": "a1",
-      "surname": "Polonezy 3",
+      "surname": "Piękny",
       "password": "Haslo",
       "cars": [
         "Audi"
       ],
-      "trips": [],
+      "trips": [
+        {
+          "tripName": "Re",
+          "tripDescription": "Niezła wyprawa",
+          "tripType": "",
+          "tripCountry": "Poland",
+          "tripCar": "Audi",
+          "tripPhoto": ""
+        },
+        {
+          "tripName": "Fan",
+          "tripDescription": "",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        },
+        {
+          "tripName": "Super",
+          "tripDescription": "Jazda",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        },
+        {
+          "tripName": "Super Extra",
+          "tripDescription": "Jazda na maxa",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        }
+      ],
       "id": 1
     },
     {
@@ -24,15 +57,32 @@
       "id": 2
     },
     {
-      "name": "Olo",
+      "name": "Olek",
       "nick": "a3",
-      "surname": "Polonezy 3",
+      "surname": "Wielki Jak Pająk",
       "password": "Haslo",
       "cars": [
         "Subaru",
         "Nissan"
       ],
-      "trips": [],
+      "trips": [
+        {
+          "tripName": "Pustynia Błędowska",
+          "tripDescription": "Piękna przygoda moim 4x4",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        },
+        {
+          "tripName": "Karaiby",
+          "tripDescription": "na ryby",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        }
+      ],
       "id": 3
     },
     {
@@ -77,20 +127,45 @@
       "id": 7
     },
     {
-      "name": "Ola",
+      "name": "Ala",
       "nick": "a8",
-      "surname": "Kowalska",
+      "surname": "Qwerty",
       "password": "Haslo",
       "cars": [
         "Kia",
         "Ford",
         "Fiat"
       ],
-      "trips": [],
+      "trips": [
+        {
+          "tripName": "Wyprawa",
+          "tripDescription": "",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        },
+        {
+          "tripName": "Na Saharę",
+          "tripDescription": "To była wspaniała przygoda",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        },
+        {
+          "tripName": "Bieszczady",
+          "tripDescription": "piękna jesienna wyprawa",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        }
+      ],
       "id": 8
     },
     {
-      "name": "Ala",
+      "name": "Ula2",
       "nick": "a9",
       "surname": "Klementyna",
       "password": "Haslo",
@@ -112,15 +187,6 @@
       ],
       "trips": [],
       "id": 10
-    },
-    {
-      "name": "Ala",
-      "nick": "b2",
-      "surname": "Falista",
-      "password": "Haslo",
-      "cars": [],
-      "trips": [],
-      "id": 11
     },
     {
       "name": "Fanfaron",
