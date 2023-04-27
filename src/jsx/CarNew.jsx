@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function CarNew({userId, API, userCars, setAddCar}) {
+function CarNew({userId, API, userCars, setSectionSel}) {
     const [newCarBrand, setNewCarBrand] = useState('');
     const [newCarName, setNewCarName] = useState('');
     const [newCarEngineFuel, setNewCarEngineFuel] = useState('');
@@ -17,7 +17,9 @@ function CarNew({userId, API, userCars, setAddCar}) {
     function handleAddCar(userId, userCars) {
 
             // if (newPassword === newPasswordChk) {
+        console.log(userCars)
                 const addNewCar = {
+                    carId: (userCars.length),
                     carName: newCarName,
                     carBrand: newCarBrand,
                     carType: newCarType,
@@ -49,7 +51,7 @@ function CarNew({userId, API, userCars, setAddCar}) {
                         console.log(error);
                     });
             // }
-            setAddCar(false);
+            setSectionSel(1);
         }
 
     return (

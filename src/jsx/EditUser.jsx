@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function EditUser({userName, userSurname, userId, API, setLoggedIn, setUserSurname, setUserName}) {
+function EditUser({userName, userSurname, userId, API, setLoggedIn, setUserSurname, setUserName, setSectionSel}) {
 
     const [newName, setNewName] = useState("")
     const [newSurname, setNewSurname] = useState("")
@@ -31,7 +31,7 @@ function EditUser({userName, userSurname, userId, API, setLoggedIn, setUserSurna
             .catch(error => {
                 console.log(error);
             });
-        setLoggedIn(false)
+        setSectionSel(1);
     }
 
     const inputNewName = (event) => {
@@ -41,7 +41,8 @@ function EditUser({userName, userSurname, userId, API, setLoggedIn, setUserSurna
 
     return (
         <div>
-
+            <p>Your nick: {userName}</p>
+            <p> change your name</p>
             <input
                 type="text"
                 className="box_input"
@@ -58,9 +59,26 @@ function EditUser({userName, userSurname, userId, API, setLoggedIn, setUserSurna
                 // onKeyUp={}
                 placeholder={userSurname}
             />
-
-            <button onClick={() => saveData(userId)}>Save</button>
-
+            <input
+                type="text"
+                className="box_input"
+                value={newSurname}
+                onChange={inputNewSurname}
+                // onKeyUp={}
+                placeholder="enter new password"
+            />
+            <input
+                type="text"
+                className="box_input"
+                value={newSurname}
+                onChange={inputNewSurname}
+                // onKeyUp={}
+                placeholder="repeat new password"
+            />
+            <section>
+                <button onClick={() => saveData(userId)}>Save</button>
+                <button onClick={() => setSectionSel(1)}>Cancel</button>
+            </section>
         </div>
     );
 }

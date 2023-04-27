@@ -5,9 +5,7 @@
       "nick": "a1",
       "surname": "Piękny",
       "password": "Haslo",
-      "cars": [
-        "Audi"
-      ],
+      "cars": [],
       "trips": [
         {
           "tripName": "Re",
@@ -50,8 +48,16 @@
       "surname": "Lepszy",
       "password": "Haslo",
       "cars": [
-        "Audi",
-        "BMW"
+        {
+          "carId": 0,
+          "carBrand": "Audi",
+          "carName": "S4",
+          "carType": "daily",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 200,
+          "carDescription": "",
+          "carPhoto": ""
+        }
       ],
       "trips": [],
       "id": 2
@@ -62,8 +68,16 @@
       "surname": "Wielki Jak Pająk",
       "password": "Haslo",
       "cars": [
-        "Subaru",
-        "Nissan"
+        {
+          "carId": 0,
+          "carBrand": "Audi",
+          "carName": "S4",
+          "carType": "daily",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 200,
+          "carDescription": "",
+          "carPhoto": ""
+        }
       ],
       "trips": [
         {
@@ -121,7 +135,16 @@
       "surname": "Nostra",
       "password": "Haslo",
       "cars": [
-        "Ford"
+        {
+          "carId": 0,
+          "carBrand": "Ford",
+          "carName": "Focus RS",
+          "carType": "daily",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 200,
+          "carDescription": "",
+          "carPhoto": ""
+        }
       ],
       "trips": [],
       "id": 7
@@ -129,39 +152,51 @@
     {
       "name": "Ala",
       "nick": "a8",
-      "surname": "Qwerty",
+      "surname": "MaKota",
       "password": "Haslo",
       "cars": [
-        "Kia",
-        "Ford",
-        "Fiat"
-      ],
-      "trips": [
         {
-          "tripName": "Wyprawa",
-          "tripDescription": "",
+          "carId": 0,
+          "carBrand": "Kia",
+          "carName": "EV6",
+          "carType": "forFun",
+          "carEngineFuel": "electric",
+          "carEnginePower": "300",
+          "carDescription": "",
+          "carPhoto": ""
+        },
+        {
+          "carId": "1",
+          "carName": "330xi",
+          "carBrand": "BMW",
+          "carType": "",
           "tripType": "",
           "tripCountry": "",
-          "tripCar": "",
+          "carDescription": "",
           "tripPhoto": ""
         },
         {
-          "tripName": "Na Saharę",
-          "tripDescription": "To była wspaniała przygoda",
-          "tripType": "",
-          "tripCountry": "",
-          "tripCar": "",
-          "tripPhoto": ""
+          "carId": 2,
+          "carBrand": "Fiat",
+          "carName": "126p",
+          "carType": "",
+          "carEngineFuel": "",
+          "carEnginePower": "",
+          "carDescription": "",
+          "carPhoto": ""
         },
         {
-          "tripName": "Bieszczady",
-          "tripDescription": "piękna jesienna wyprawa",
-          "tripType": "",
-          "tripCountry": "",
-          "tripCar": "",
-          "tripPhoto": ""
+          "carId": 3,
+          "carBrand": "Subaru",
+          "carName": "Legacy",
+          "carType": "classic",
+          "carEngineFuel": "petrol",
+          "carEnginePower": "245",
+          "carDescription": "",
+          "carPhoto": ""
         }
       ],
+      "trips": [],
       "id": 8
     },
     {
@@ -170,7 +205,16 @@
       "surname": "Klementyna",
       "password": "Haslo",
       "cars": [
-        "BMW, Ford"
+        {
+          "carId": 0,
+          "carBrand": "BMW",
+          "carName": "430xi",
+          "carType": "daily",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 250,
+          "carDescription": "",
+          "carPhoto": ""
+        }
       ],
       "trips": [],
       "id": 9
@@ -181,9 +225,36 @@
       "surname": "Zastara",
       "password": "Haslo",
       "cars": [
-        "Kia",
-        "Ford",
-        "Chevy"
+        {
+          "carId": 0,
+          "carBrand": "Audi",
+          "carName": "S4",
+          "carType": "daily",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 200,
+          "carDescription": "",
+          "carPhoto": ""
+        },
+        {
+          "carId": 1,
+          "carBrand": "Audi",
+          "carName": "S4",
+          "carType": "daily",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 200,
+          "carDescription": "",
+          "carPhoto": ""
+        },
+        {
+          "carId": 2,
+          "carBrand": "Audi",
+          "carName": "S4",
+          "carType": "daily",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 200,
+          "carDescription": "",
+          "carPhoto": ""
+        }
       ],
       "trips": [],
       "id": 10
@@ -212,8 +283,44 @@
       "surname": "Polonezy 3",
       "password": "Haslo",
       "cars": [
-        "Subaru",
-        "Nissan"
+        {
+          "carBrand": "Subaru",
+          "carName": "Impreza",
+          "carType": "daily",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 400,
+          "carDescription": "",
+          "carPhoto": ""
+        },
+        {
+          "carBrand": "Mazda",
+          "carName": "MX5",
+          "carType": "classic",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 180,
+          "carDescription": "",
+          "carPhoto": ""
+        },
+        {
+          "carId": 2,
+          "carName": "Testarossa",
+          "carBrand": "Ferrari",
+          "carType": "",
+          "tripType": "",
+          "tripCountry": "",
+          "carDescription": "",
+          "tripPhoto": ""
+        },
+        {
+          "carId": 3,
+          "carName": "121",
+          "carBrand": "Mazda",
+          "carType": "",
+          "tripType": "",
+          "tripCountry": "",
+          "carDescription": "",
+          "tripPhoto": ""
+        }
       ],
       "trips": [],
       "id": 14
