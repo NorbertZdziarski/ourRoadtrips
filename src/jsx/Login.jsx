@@ -104,11 +104,12 @@ function Login({API}) {
                 setLoggedUser(user)
                 setLoggedIn(true)
                 console.log('ok')}
-            //  else {
-            //     setLoggedIn(false)
-            //     setNewUser("")
-            //     setNewPassword("")
-            //     console.log('błąd <<<<<<<<<<')}
+             else {
+
+                // setLoggedIn(false)
+                setNewUser("")
+                setNewPassword("")
+                console.log('błąd <<<<<<<<<<')}
         })
     }
 
@@ -130,24 +131,29 @@ function Login({API}) {
                 usersId={loggedUser.id}
                 API = {API}
                 allTrips = {databaseTrips}
-            />) :        <div >
-                <p> Login </p>
-                <input
-                    type="text"
-                    className="box_input"
-                    value={newUser}
-                    onChange={inputNewUser}
-                    placeholder='enter your account name'
-                />
-                <input
-                    type="text"
-                    className="box_input"
-                    value={newPassword}
-                    onChange={inputNewPassword}
-                    placeholder='enter the password'
-                />
-                <button onClick={()=> checkLogin()}>Login</button>
-
+            />) :
+            <div className="login_main_div">
+                <div className="login_box">
+                    <p> Login </p>
+                    <input
+                        type="text"
+                        className="box_input"
+                        value={newUser}
+                        onChange={inputNewUser}
+                        placeholder='enter your account name'
+                    />
+                    <input
+                        type="text"
+                        className="box_input"
+                        value={newPassword}
+                        onChange={inputNewPassword}
+                        placeholder='enter the password'
+                    />
+                    <div className="login_box-buttons">
+                        <button className="btn" onClick={()=> checkLogin()}>Login</button>
+                        <button className="btn" onClick={()=> checkLogin()}>Create an account </button>
+                    </div>
+                </div>
             </div> }
 
         </>

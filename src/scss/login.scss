@@ -5,6 +5,10 @@
 justify-content: center;
 }
 
+.login__panel {
+
+}
+
 .login_box {
   box-sizing: border-box;
   margin: 1.5rem;
@@ -13,4 +17,10 @@ justify-content: center;
   width: 50rem;
   height: 30rem;
   background-color: $btnNavigationColor;
+
+}
+.login_box-buttons {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-around;
 }
