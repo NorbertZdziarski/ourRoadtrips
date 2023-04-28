@@ -18,6 +18,7 @@ function UserPanel({userName, userSurname, userCars, userTrips, usersId, API, se
                     userCars={userCars}
                     userId={usersId}
                     API={API}
+                    setSectionSel={setSectionSel}
                 />;
             case 2:
                 return <TripNew
@@ -25,12 +26,14 @@ function UserPanel({userName, userSurname, userCars, userTrips, usersId, API, se
                     API={API}
                     userCars={userCars}
                     userTrips={userTrips}
+                    setSectionSel={setSectionSel}
                 />;
             case 3:
                 return <CarNew
                     userId={usersId}
                     API={API}
                     userCars={userCars}
+                    setSectionSel={setSectionSel}
                 />;
             case 4:
                 return <EditUser
@@ -49,17 +52,24 @@ function UserPanel({userName, userSurname, userCars, userTrips, usersId, API, se
 
     return (
         <div className="fnt">
-            <section>
-            <p>Witaj ! </p>
-            <p> Twoje dane: </p>
+            <section className="userpanel_bar">
                 <div>
-                <h4> {userName}, {userSurname}</h4>
+                    <button className="btn_userpanel_bar fnt_userpanel" onClick={() => setLoggedIn(false)}>  back to main menu </button>
+                    <button className="btn_userpanel_bar fnt_userpanel" onClick={() => setSectionSel(1)}>  show trips & cars </button>
+                    <button className="btn_userpanel_bar fnt_userpanel" onClick={() => setSectionSel(2)}>  Add new trip </button>
+                    <button className="btn_userpanel_bar fnt_userpanel" onClick={() => setSectionSel(3)}>  Add new Car</button>
+                    <button className="btn_userpanel_bar fnt_userpanel" onClick={() => setSectionSel(4)}>  Edit User</button>
                 </div>
-                <button onClick={() => setLoggedIn(false)}>  back to main menu </button>
-                <button onClick={() => setSectionSel(1)}>  show trips & cars </button>
-                <button onClick={() => setSectionSel(2)}>  Add new trip </button>
-                <button onClick={() => setSectionSel(3)}>  Add new Car</button>
-                <button onClick={() => setSectionSel(4)}>  Edit User</button>
+                <div className="userpanel_bar">
+                    <div>
+                        <p className="fnt_userpanel">Witaj ! </p>
+                        <h4 className="fnt_userpanel"> {userName}, {userSurname}</h4>
+                    </div>
+                    <img className="userpanel_ico" src="../../warehouse/images/ico/User-Outline.png"/>
+                </div>
+
+
+
             </section>
             <SectionSelection
                 value={sectionSel}

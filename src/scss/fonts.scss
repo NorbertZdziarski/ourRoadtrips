@@ -15,5 +15,15 @@ $fontFalmily: 'Quicksand', sans-serif;
 
 .fnt {
   @include familyFont;
+  line-height: 2.8rem;
+  font-size: 2rem;
   color: #242424;
+}
+
+.fnt_userpanel {
+  @include familyFont;
+  line-height: 2.8rem;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.96);
+
 }

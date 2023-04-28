@@ -5,36 +5,48 @@
       "nick": "a1",
       "surname": "Piękny",
       "password": "Haslo",
-      "cars": [],
+      "cars": [
+        {
+          "carId": 0,
+          "carBrand": "FSO",
+          "carName": "Polonez",
+          "carType": "daily",
+          "carEngineFuel": "petrol",
+          "carEnginePower": 80,
+          "carDescription": "wspaniały potwór",
+          "carPhoto": ""
+        },
+        {
+          "carId": 1,
+          "carBrand": "FSO",
+          "carName": "Syrena Bosto",
+          "carType": "forFun",
+          "carDescription": "custom car"
+        }
+      ],
       "trips": [
         {
-          "tripName": "Re",
-          "tripDescription": "Niezła wyprawa",
-          "tripType": "",
+          "tripId": 0,
+          "tripName": "Wyprawa do okoła Lidla",
+          "tripDescription": "i nie tylko",
+          "tripType": "wyczynowa",
           "tripCountry": "Poland",
-          "tripCar": "Audi",
-          "tripPhoto": ""
+          "tripCar": "Audi"
         },
         {
-          "tripName": "Fan",
-          "tripDescription": "",
+          "tripId": 1,
+          "tripName": "jhkhkj",
+          "tripDescription": "hjhkjhkj",
           "tripType": "",
           "tripCountry": "",
           "tripCar": "",
           "tripPhoto": ""
         },
         {
-          "tripName": "Super",
-          "tripDescription": "Jazda",
-          "tripType": "",
-          "tripCountry": "",
-          "tripCar": "",
-          "tripPhoto": ""
-        },
-        {
-          "tripName": "Super Extra",
-          "tripDescription": "Jazda na maxa",
-          "tripType": "",
+          "tripId": 2,
+          "tripName": "do kościoła",
+          "tripDescription": "i z powrotem",
+          "tripType": "miejska",
           "tripCountry": "",
           "tripCar": "",
           "tripPhoto": ""
@@ -43,23 +55,52 @@
       "id": 1
     },
     {
-      "name": "Stefan",
-      "nick": "a2",
-      "surname": "Lepszy",
+      "name": "Asia",
+      "nick": "asia1234",
+      "surname": "Piękna",
       "password": "Haslo",
       "cars": [
         {
           "carId": 0,
-          "carBrand": "Audi",
-          "carName": "S4",
+          "carBrand": "Kia",
+          "carName": "Soul",
           "carType": "daily",
-          "carEngineFuel": "petrol",
-          "carEnginePower": 200,
+          "carEngineFuel": "electric",
+          "carEnginePower": 150,
           "carDescription": "",
           "carPhoto": ""
+        },
+        {
+          "carId": 1,
+          "carName": "Impreza",
+          "carBrand": "Subaru",
+          "carType": "forFun",
+          "tripType": "petrol",
+          "tripCountry": "320",
+          "carDescription": "",
+          "tripPhoto": ""
         }
       ],
-      "trips": [],
+      "trips": [
+        {
+          "tripId": 0,
+          "tripName": "Rumunia",
+          "tripDescription": "Transalpina",
+          "tripType": "górska",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        },
+        {
+          "tripId": 1,
+          "tripName": "wspaniała wyprawa",
+          "tripDescription": "wakacje nad Soliną",
+          "tripType": "górska",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
+        }
+      ],
       "id": 2
     },
     {
@@ -81,6 +122,7 @@
       ],
       "trips": [
         {
+          "tripId": 0,
           "tripName": "Pustynia Błędowska",
           "tripDescription": "Piękna przygoda moim 4x4",
           "tripType": "",
@@ -89,6 +131,7 @@
           "tripPhoto": ""
         },
         {
+          "tripId": 1,
           "tripName": "Karaiby",
           "tripDescription": "na ryby",
           "tripType": "",
@@ -104,10 +147,7 @@
       "nick": "a4",
       "surname": "ssssssssssss1111111111111111",
       "password": "Haslo",
-      "cars": [
-        "Mazda",
-        "Kawasaki"
-      ],
+      "cars": [],
       "trips": [],
       "id": 4
     },
@@ -159,44 +199,22 @@
           "carId": 0,
           "carBrand": "Kia",
           "carName": "EV6",
-          "carType": "forFun",
+          "carType": "daily",
           "carEngineFuel": "electric",
-          "carEnginePower": "300",
-          "carDescription": "",
-          "carPhoto": ""
-        },
-        {
-          "carId": "1",
-          "carName": "330xi",
-          "carBrand": "BMW",
-          "carType": "",
-          "tripType": "",
-          "tripCountry": "",
-          "carDescription": "",
-          "tripPhoto": ""
-        },
-        {
-          "carId": 2,
-          "carBrand": "Fiat",
-          "carName": "126p",
-          "carType": "",
-          "carEngineFuel": "",
-          "carEnginePower": "",
-          "carDescription": "",
-          "carPhoto": ""
-        },
-        {
-          "carId": 3,
-          "carBrand": "Subaru",
-          "carName": "Legacy",
-          "carType": "classic",
-          "carEngineFuel": "petrol",
-          "carEnginePower": "245",
-          "carDescription": "",
-          "carPhoto": ""
+          "carEnginePower": "350",
+          "carDescription": ""
         }
       ],
-      "trips": [],
+      "trips": [
+        {
+          "tripId": 0,
+          "tripName": "Wspaniała wyprawa",
+          "tripDescription": "do okoła biedronki",
+          "tripType": "miejska",
+          "tripCountry": "",
+          "tripCar": ""
+        }
+      ],
       "id": 8
     },
     {
@@ -284,6 +302,7 @@
       "password": "Haslo",
       "cars": [
         {
+          "carId": 0,
           "carBrand": "Subaru",
           "carName": "Impreza",
           "carType": "daily",
@@ -293,6 +312,7 @@
           "carPhoto": ""
         },
         {
+          "carId": 1,
           "carBrand": "Mazda",
           "carName": "MX5",
           "carType": "classic",

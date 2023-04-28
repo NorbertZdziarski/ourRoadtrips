@@ -55,81 +55,73 @@ function CarNew({userId, API, userCars, setSectionSel}) {
         }
 
     return (
-        <div className="newAccount_main">
-            <div>
-                <h2>Dodaj swoją furę</h2>
-                <p>wypełnij pola zonaczone *</p>
-            </div>
-            <div>
-                <label>
-                    <p>Marka pojazdu *</p>
-                    <input
-                        type="text"
-                        className="box_input"
-                        value={newCarBrand}
-                        onChange={((event) => setNewCarBrand(event.target.value))}
-                        placeholder='>>>'
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    <p>Model pojazdu *</p>
-                    <input
-                        type="text"
-                        className="box_input"
-                        value={newCarName}
-                        onChange={((event) => setNewCarName(event.target.value))}
-                        placeholder='>>>'
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    <p>rodzaj silnika *</p>
-                    <input
-                        type="text"
-                        className="box_input"
-                        value={newCarEngineFuel}
-                        // onChange={inputNewTripName}
-                        placeholder='>>>'
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    <p>moc silnika *</p>
-                    <input
-                        type="text"
-                        className="box_input"
-                        value={newCarEnginePower}
-                        // onChange={inputNewTripName}
-                        placeholder='>>>'
-                    />
-                </label>
-            </div>
+        <div className="newAccount_main fnt_userpanel">
+            <p> change your car</p>
+            <p> Producent </p>
+            <section>
+                <input
+                    type="text"
+                    className="box_input"
+                    value={newCarBrand}
+                    onChange={() => setNewCarBrand(event.target.value)}
+                    placeholder= ">>>"
+                />
+                <p> model </p>
+                <input
+                    type="text"
+                    className="box_input"
+                    value={newCarName}
+                    onChange={() => setNewCarName(event.target.value)}
+                    // onKeyUp={}
+                    placeholder= ">>>"
+                />
+            </section>
+            <section>
 
-            <div>
-                <label>
-                    <p>dodaj opis</p>
-                    <textarea
-                        className="box_input"
-                        id=""
-                        name=""
-                        value={newCarDescription}
-                        // onChange={inputNewDescription}
-                        placeholder='>>>'
-                    />
-                </label>
+                <p> engine fuel</p>
+                {/*<select multiple={true} value={['B', 'C']}>*/}
+                <select onChange={() => setNewCarEngineFuel(event.target.value)}>
+                    <option value="---"> </option>
+                    <option value="petrol">Petrol</option>
+                    <option value="diesel">Diesel</option>
+                    <option value="electric">Electric</option>
+                </select>
+                <p> engine power</p>
+                <input
+                    type="number"
+                    className="box_input"
+                    value={newCarEnginePower}
+                    onChange={() => setNewEnginePower(event.target.value)}
+                    // onKeyUp={}
+                    placeholder= ">>>"
+                />
+            </section>
+            <section>
+                <p> for you</p>
+                {/*<select multiple={true} value={['B', 'C']}>*/}
+                <select onChange={() => setNewCarType(event.target.value)}>
+                    <option value="---"> </option>
+                    <option value="daily">daily</option>
+                    <option value="classic">classic</option>
+                    <option value="forFun">for fun</option>
+                </select>
+            </section>
+            <section>
+                   <textarea
+                       className="box_input"
+                       // id=""
+                       // name=""
+                       value={newCarDescription}
+                       onChange={() => setNewCarDescription(event.target.value)}
+                       placeholder='>>>'
+                   />
+            </section>
+            <section>
+                <button onClick={() => handleAddCar(userId, userCars)}>SAVE</button>
+                <button onClick={() => setSectionSel(1)}>Cancel</button>
+            </section>
 
-            </div>
-            <div>
-                <label>
-                    <p>Dodaj zdjęcie</p>
 
-                </label>
-            </div>
-            <button onClick={() => handleAddCar(userId, userCars)}>SAVE</button>
 
         </div>
     );

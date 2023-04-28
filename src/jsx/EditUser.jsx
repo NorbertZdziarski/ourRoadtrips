@@ -40,9 +40,9 @@ function EditUser({userName, userSurname, userId, API, setLoggedIn, setUserSurna
         setNewSurname(event.target.value)}
 
     return (
-        <div>
-            <p>Your nick: {userName}</p>
-            <p> change your name</p>
+        <div className="fnt_userpanel">
+
+            <p> change your data: </p>
             <input
                 type="text"
                 className="box_input"

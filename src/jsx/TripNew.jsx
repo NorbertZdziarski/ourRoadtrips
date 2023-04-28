@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function TripNew({userId, API, userCars, userTrips, setAddTrip}) {
+function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) {
     const [newTripName, setNewTripName] = useState('');
     const [newTripDescription, setNewTripDescription] = useState('');
     const [newTripType, setNewTripType] = useState('');
@@ -16,6 +16,7 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip}) {
     function handleAddTrip(userId, userTrips) {
         // if (newPassword === newPasswordChk) {
             const addNewTrip = {
+                tripId: (userTrips.length),
                 tripName: newTripName,
                 tripDescription: newTripDescription ,
                 tripType: newTripType,
@@ -46,81 +47,68 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip}) {
                     console.log(error);
                 });
         // }
-        setAddTrip(false);
+        setSectionSel(1);
     }
 
     return (
-        <div className="newAccount_main">
-            <div>
+        <div className="newAccount_main fnt_userpanel">
+            <section>
                 <h2>Dodaj swoją wyprawę</h2>
-                <p>wypełnij pola zonaczone *</p>
-            </div>
-            <div>
-                <label>
-                    <p>nazwij wyprawę *</p>
-                    <input
-                        type="text"
-                        className="box_input"
-                        value={newTripName}
-                        onChange={((event) => setNewTripName(event.target.value))}
-                        placeholder='>>>'
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    <p>dodaj opis</p>
-                    <textarea
-                        className="box_input"
-                        id=""
-                        name=""
-                        value={newTripDescription}
-                        onChange={((event) => setNewTripDescription(event.target.value))}
-                        placeholder='>>>'
-                    />
-                </label>
-                <label>
-                    <p>newTripCar</p>
-                    <p>list of cars radio</p>
-                </label>
-            </div>
-            <div>
-                <label>
-                    <p>typ wyprawy (górska, morska, miejska)</p>
-                    <input
-                        type="text"
-                        className="box_input"
-                        value={newTripType}
-                        // onChange={inputNewTripName}
-                        placeholder='>>>'
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    <p>kraj podróży</p>
-                    <input
-                        type="text"
-                        className="box_input"
-                        value={newTripCountry}
-                        // onChange={inputNewTripName}
-                        placeholder='>>>'
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    <p>newTripPhoto</p>
-                    {/*<input*/}
-                    {/*    type="text"*/}
-                    {/*    className="box_input"*/}
-                    {/*    value={newTripCountry}*/}
-                    {/*    // onChange={inputNewTripName}*/}
-                    {/*    placeholder='>>>'*/}
-                    {/*/>*/}
-                </label>
-            </div>
-        <button onClick={() => handleAddTrip(userId, userTrips)}>SAVE</button>
+                <p> tytuł </p>
+                <input
+                    type="text"
+                    className="box_input"
+                    value={newTripName}
+                    onChange={() => setNewTripName(event.target.value)}
+                    // onKeyUp={}
+                    // placeholder= {selectedTrip.tripName}
+                />
+                <textarea
+                    className="box_input"
+                    // id=""
+                    // name=""
+                    value={newTripDescription}
+                    onChange={() => setNewTripDescription(event.target.value)}
+                    placeholder='>>>'
+                />
+            </section>
+            <section>
+
+                <p> trip type</p>
+
+                <select onChange={() => setNewTripType(event.target.value)}>
+                    <option value="---"> </option>
+                    <option value="górska">górska</option>
+                    <option value="miejska">miejska</option>
+                    <option value="wyczynowa">wyczynowa</option>
+                </select>
+                <p> where </p>
+                <input
+                    type="number"
+                    className="box_input"
+                    value={newTripCountry}
+                    onChange={() => setNewTripCountry(event.target.value)}
+                    // onKeyUp={}
+                    // placeholder= {selectedTrip.tripCountry}
+                />
+            </section>
+            <section>
+                <p> for you</p>
+                {/*<select value={[userCars.name]}>*/}
+                <select onChange={() => setNewTripCar(event.target.value)}>
+                    {/*<option value="---"> </option>*/}
+                    {/*<option value="daily">daily</option>*/}
+                    {/*<option value="classic">classic</option>*/}
+                    {/*<option value="forFun">for fun</option>*/}
+                </select>
+            </section>
+            <section>
+                <p>add trip photo</p>
+            </section>
+            <section>
+                <button onClick={() => handleAddTrip(userId, userTrips)}>SAVE</button>
+                <button onClick={() => setSectionSel(1)}>Cancel</button>
+            </section>
 
         </div>
     );

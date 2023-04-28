@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import UserPanel from "./UserPanel.jsx";
 import SmallShowTrip from "./SmallShowTrip.jsx";
+import CustomScroll from "react-custom-scroll";
+
 
 
 // function printTrips(trip, i) {
@@ -17,11 +19,18 @@ console.log('Main Page')
 
     const printMainPage = () => {
         return (
-            <div className="mainPageStyle">
-                {allTrips.map((trip, i) => <SmallShowTrip key={i} trip = {trip} i ={i}/>)}
+            <div >
+                <CustomScroll heightRelativeToParent="calc(100% - 20px)">
+                    <div className="mainPageStyle">
+                        {allTrips.map((trip, i) => <button className="clickPage"><SmallShowTrip key={i} trip = {trip} i ={i}/></button>)}
+                    </div>
+                </CustomScroll>
             </div>
         )
     }
+
+
+    // onClick={() => setSectionSel(1)}
 
     function User(props) {
         return (

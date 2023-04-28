@@ -10,6 +10,7 @@ function NewAccount({API, setLoggedIn}) {
     // function checkCorrect() {
     //
     // }
+    console.log(' NEW ACCOUNT')
 
     function handleAddUser() {
         if (newPassword === newPasswordChk) {

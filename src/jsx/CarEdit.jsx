@@ -7,8 +7,8 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
     const [newCarType, setNewCarType] = useState("")
     const [newCarEngineFuel, setNewCarEngineFuel] = useState("")
     const [newCarEnginePower, setNewCarEnginePower] = useState("")
-    // const [newCarDescription, setNewCarDescription] = useState("")
-    // const [newCarPhoto, setNewCarPhoto] = useState("")
+    const [newCarDescription, setNewCarDescription] = useState("")
+    const [newCarPhoto, setNewCarPhoto] = useState("")
 
 
     const saveData = (id, idCar) => {  // ------------------------------------------------------------------------------------ zmiana - w trakcie pracy
@@ -18,10 +18,10 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
             carBrand: (newCarBrand ? newCarBrand : selectedCar.carBrand),
             carName: (newCarName ? newCarName : selectedCar.carName),
             carType: (newCarType ? newCarType : selectedCar.carType),
-            carEngineFuel: newCarEngineFuel,
-            carEnginePower: newCarEnginePower,
-            carDescription: "",
-            carPhoto: ""
+            carEngineFuel: (newCarEngineFuel ? newCarEngineFuel : selectedCar.carEngineFuel),
+            carEnginePower: (newCarEnginePower ? newCarEnginePower : selectedCar.carEnginePower),
+            carDescription: (newCarDescription ? newCarDescription : selectedCar.carDescription),
+            carPhoto: (newCarPhoto ? newCarPhoto : selectedCar.carPhoto)
         };
 
         // userTrips.push(addNewTrip)
@@ -54,7 +54,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
 
 
     return (
-        <div>
+        <div className="fnt_userpanel">
             <p> change your car</p>
             <p> Producent </p>
             <section>
@@ -80,6 +80,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
                 <p> engine fuel</p>
                 {/*<select multiple={true} value={['B', 'C']}>*/}
                 <select onChange={() => setNewCarEngineFuel(event.target.value)}>
+                    <option value="---"> </option>
                     <option value="petrol">Petrol</option>
                     <option value="diesel">Diesel</option>
                     <option value="electric">Electric</option>
@@ -98,6 +99,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
                 <p> for you</p>
                 {/*<select multiple={true} value={['B', 'C']}>*/}
                 <select onChange={() => setNewCarType(event.target.value)}>
+                    <option value="---"> </option>
                     <option value="daily">daily</option>
                     <option value="classic">classic</option>
                     <option value="forFun">for fun</option>
@@ -106,16 +108,16 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
             <section>
                    <textarea
                        className="box_input"
-                       id=""
-                       name=""
-                       // value={newTripDescription}
-                       // onChange={((event) => setNewTripDescription(event.target.value))}
+                       // id=""
+                       // name=""
+                       value={newCarDescription}
+                       onChange={() => setNewCarDescription(event.target.value)}
                        placeholder='>>>'
                    />
             </section>
             <section>
                 <button onClick={() => saveData(userId, selectedCar.carId)}>Save</button>
-                {/*<button onClick={() => setSectionSel(1)}>Cancel</button>*/}
+                <button onClick={() => setSectionSel(1)}>Cancel</button>
             </section>
         </div>
     );

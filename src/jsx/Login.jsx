@@ -40,63 +40,6 @@ function Login({API}) {
         }
     }
 
-
-
-
-    // function handleAddTask() {
-    //     const dane = {
-    //         name: newUser,
-    //         surname: newPassword,
-    //         password: "Haslo",
-    //         cars: ["Subaru", "Nissan"],
-    //         trips: []
-    //     }
-    //     fetch(`${API}/profile`
-    //         , {
-    //             method: "POST"
-    //             ,
-    //             body: JSON.stringify(dane),
-    //             headers: {
-    //                 "Content-Type": "application/json"
-    //             }
-    //         })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //
-    //             console.log(data);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-    // }
-
-    // const changeData = (id) => {  // ------------------------------------------------------------------------------------ zmiana - w trakcie pracy
-    //
-    //
-    //
-    //     const data = {
-    //         surname: "Polonezy rere3"
-    //     };
-    //     console.log(id)
-    //     fetch(`${API}/profile/${id}`
-    //         , {
-    //             method: "PATCH"
-    //             ,
-    //             body: JSON.stringify(data),
-    //             headers: {
-    //                 "Content-Type": "application/json"
-    //             }
-    //         })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             setLoggedUser(data);
-    //             console.log(data);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-    // }
-
     function checkLogin()  {    // ------------------------------------------------------------------------------------ logowanie
 
         databas.map((user) => {
@@ -151,7 +94,7 @@ function Login({API}) {
                     />
                     <div className="login_box-buttons">
                         <button className="btn" onClick={()=> checkLogin()}>Login</button>
-                        <button className="btn" onClick={()=> checkLogin()}>Create an account </button>
+                        {/*<button className="btn" onClick={()=> newAcc()}>Create an account </button>*/}
                     </div>
                 </div>
             </div> }

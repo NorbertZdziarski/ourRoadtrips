@@ -1,6 +1,8 @@
+@import "reset";
 @import "variables";
 @import "fonts";
 @import "box-style";
+//@import '~sass-colors';
 
 
 
@@ -20,7 +22,6 @@ html {
   font-size: 10px;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
 }
 
 .off {
@@ -51,7 +52,7 @@ html {
 
   height: 100vh;
   background-attachment: fixed;
-  background-image: url("../../warehouse/images/slideshow/20221030_121459.jpg");
+  background-image: url("../../warehouse/images/slideshow/bgr_bmw.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -63,6 +64,7 @@ html {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.46);
+    box-shadow: inset 0 0 50px black;
 }
 }
 .newAccount_main {
@@ -154,6 +156,16 @@ html {
   }
 }
 
+.btn_userpanel_bar {
+  background-color: rgba(0, 0, 0, 0);
+  border:  1px solid rgba(0, 0, 0, 0);
+  margin-right: 2rem;
+  &:hover {
+    border-bottom: 1px solid dodgerblue;
+  }
+}
+
+
 .main_header {
   margin: 1.5rem 0;
   background-color: $btnNavigationColor;
@@ -198,6 +210,7 @@ html {
 
 .mainMenu__section {
  padding-top: 3rem;
+
 }
 .header__nav {
   @include flexCenter;
@@ -224,7 +237,7 @@ html {
   color:white;
   justify-content: space-between;
   align-items: start;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 .main_box {
@@ -235,9 +248,7 @@ html {
 
 
 .box-dekor {
-
-
-  top: 0;
+  top: 16px;
   left: 0;
   height: 6rem;
   @include flexCenter;
@@ -249,7 +260,19 @@ html {
 .mainPageStyle {
   display: flex;
   //flex-direction: column;
-  align-items: first;
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: space-around;
   flex-wrap: wrap;
+}
+.userpanel_ico {
+  width: 80px;
+  margin: 0 2rem;
+  //color: sass-color.invert(black);
+}
+
+.userpanel_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
