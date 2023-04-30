@@ -46,7 +46,7 @@ function UserPanel({userName, userSurname, userCars, userTrips, usersId, API, se
                     setSectionSel={setSectionSel}
                 />;
             default:
-                <p>error</p>
+                return <p>error</p>;
         }
     }
 
