@@ -2,6 +2,7 @@ import {useState} from 'react';
 import UserPanel from "./UserPanel.jsx";
 import SmallShowTrip from "./SmallShowTrip.jsx";
 import CustomScroll from "react-custom-scroll";
+import TripLook from "./TripLook.jsx";
 
 
 
@@ -17,12 +18,19 @@ console.log('Main Page')
     const [userName, setUserName] = useState("a");
     const [userSurname, setUserSurname] = useState("b");
 
+
+    function showTripLook(trip) {
+        setLoggedIn(true)
+        return <TripLook trip={trip}/>
+    }
+
     const printMainPage = () => {
         return (
             <div >
                 <CustomScroll heightRelativeToParent="calc(100% - 20px)">
                     <div className="mainPageStyle">
-                        {allTrips.map((trip, i) => <button className="clickPage"><SmallShowTrip key={i} trip = {trip} i ={i}/></button>)}
+
+                        {allTrips.map((trip, i) => <button key={`b${i}`} className="clickPage" onClick={(()=>showTripLook(trip))}><SmallShowTrip key={i} trip = {trip} i ={i}/></button>)}
                     </div>
                 </CustomScroll>
             </div>

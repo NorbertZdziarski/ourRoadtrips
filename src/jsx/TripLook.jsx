@@ -1,8 +1,10 @@
 import React from 'react';
 
-function TripLook({userName, userTrip}) {
+function TripLook({trip}) {
+console.log(trip)
+    // userName, userTrip
     return (
-        <div></div>
+        <div>reeeeeeeeeererereererererererere {trip.name}</div>
     );
 }
 
