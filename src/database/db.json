@@ -28,7 +28,7 @@
         {
           "tripId": 0,
           "tripName": "Wyprawa do okoła Lidla",
-          "tripDescription": "i nie tylko",
+          "tripDescription": "i nie tylko. Zaliczona Biedronka i Kauland. A i kawa z Żabki była...",
           "tripType": "wyczynowa",
           "tripCountry": "Poland",
           "tripCar": "Audi"
@@ -213,6 +213,15 @@
           "tripType": "miejska",
           "tripCountry": "",
           "tripCar": ""
+        },
+        {
+          "tripId": 1,
+          "tripName": "Chorwacja",
+          "tripDescription": "Wyprawa wzdłuż wybrzeża. Zwiedzanie Zadaru, Splitu i tak aż do Dubrovnika. Wspaniala przygoda",
+          "tripType": "górska",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": ""
         }
       ],
       "id": 8

@@ -17,15 +17,24 @@ function MainPage({userNameLog, userSurnameLog, userCars, userTrips, usersId, AP
 console.log('Main Page')
     const [loggedIn, setLoggedIn] = useState(true);
     const [choosePage, setChoosePage] = useState(1)
+    const [chooseTtip, setChooseTrip] = useState(1)
 
 
 
     function showTripLook({trip}) {
         console.log('showTripLook')
+        console.log(trip)
+        setChooseTrip(trip)
+        setChoosePage(4)
+
+
         // setLoggedIn(true)
-        return <TripLook
-            trip={trip}
-        />
+        // return <TripLook
+        //                     trip={trip} />
+
+        // onClick={()=>setChoosePage(4)
+        //
+        // ()=>showTripLook(trip)
     }
 
     const PrintMainPage = () => {
@@ -33,7 +42,7 @@ console.log('Main Page')
             <div >
                 <CustomScroll heightRelativeToParent="calc(100% - 20px)">
                     <div className="mainPageStyle">
-                        {allTrips.map((trip, i) => <button key={`b${i}`} className="clickPage" onClick={()=>showTripLook(trip)}><SmallShowTrip key={i} trip = {trip} i ={i}/></button>)}
+                        {allTrips.map((trip, i) => <button key={`b${i}`} className="clickPage" onClick={()=> showTripLook({trip}) }><SmallShowTrip key={i} trip = {trip} i ={i}/></button>)}
                     </div>
                 </CustomScroll>
             </div>
@@ -65,8 +74,7 @@ console.log('Main Page')
                     usersId = {usersId}
                     API = {API}
                     setLoggedIn = {setLoggedIn}
-                    // setUserName = {setUserName}
-                    // setUserSurname = {setUserSurname}
+
                     allTrips = {allTrips} />;
             case 3:
                 return (<User>
@@ -74,12 +82,16 @@ console.log('Main Page')
                     <button onClick={(()=>setLoggedIn(true))} className="mainMenu__button"></button>
                     </User>);
             case 4:
-                return <CarNew
-                    userId={usersId}
-                    API={API}
-                    userCars={userCars}
-                    // setSectionSel={setSectionSel}
-                />;
+                return <TripLook
+                    trip={chooseTtip}
+                />
+
+                // <CarNew
+                //     userId={usersId}
+                //     API={API}
+                //     userCars={userCars}
+                //     // setSectionSel={setSectionSel}
+                // />;
             default:
                 return <p>{value}</p>;
 
@@ -88,31 +100,22 @@ console.log('Main Page')
 
 
     return (
-        <div className="box">
-
-
-            <section className="mainMenu__section">
-
-                <div>
-                    <button onClick={()=>setChoosePage(1)} className="mainMenu__button">A</button>
-                    <button onClick={()=>setChoosePage(2)} className="mainMenu__button">b</button>
-                    <button onClick={()=>setChoosePage(3)} className="mainMenu__button">c</button>
-                    <button onClick={()=>setChoosePage(4)} className="mainMenu__button">d</button>
-                </div>
-
+            <section className="mainMenu__section  ">
+                <header className="main_header box-top">
+                    <div className="mainmenu__ico">
+                        <button onClick={()=>setChoosePage(1)} className="mainMenu__home"></button>
+                        <button onClick={()=>setChoosePage(2)} className="mainMenu__filter"></button>
+                        <button onClick={()=>setChoosePage(3)} className="mainMenu__user1"></button>
+                        <button onClick={()=>setChoosePage(4)} className="mainMenu__button"></button>
+                    </div>
+                    <p>{userNameLog}</p>
+                </header>
+                <div className="box">
                 <ChooseFunction
                     value = {choosePage}
                 />
-
-
-
-                {/*{loggedIn ? () :*/}
-                {/*    (*/}
-                {/*    )}*/}
-
+                </div>
             </section>
-
-        </div>
     );
 }
 

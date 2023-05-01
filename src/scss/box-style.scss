@@ -4,10 +4,14 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: 1rem;
   height: auto;
+  margin: 0;
   //overflow-y: scroll;
 }
 .box-top {
-
+  background-color: rgba(0, 0, 0, 0.34);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  height: auto;
 }
 @mixin boxDecor($width, $height, $color: $bgrPanelColor) {
   background-color: $color;

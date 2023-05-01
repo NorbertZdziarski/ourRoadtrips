@@ -3,6 +3,19 @@ $cornerCut: 20px;
 
 $widthColumnCenter: calc(100% - ($globalMarginWidth * 2));
 
+$headerHight: 5rem;
+$headerLeyoutHight: 12rem;
+$layoutOffset: 1.5rem;
+
+$sumOfConstansLayout: calc($headerHight + $headerLeyoutHight + (2 * $layoutOffset));
+
+$leyoutFotoMapHight: calc(0.5 * (100vh - $sumOfConstansLayout));
+$layoutDescription: calc(0.7 * (100vh - $sumOfConstansLayout));
+$layoutDetails: calc(0.3* (100vh - $sumOfConstansLayout));
+
+
+
+
 $btnNavigationColor: rgba(243, 243, 243, 0.6);
 $bgrPanelColor: rgba(245, 245, 245, 0.8);
 $fontSecondaryColor: rgb(243, 243, 243)

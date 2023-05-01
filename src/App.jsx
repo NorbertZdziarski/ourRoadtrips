@@ -15,12 +15,12 @@ function App() {
                     <button className="btn_main btn_main_lft"></button>
                 </div>
                 <div className="column_center">
-                    <div className="box-dekor">
-                        <header className="main_header">
-                            <nav className="header__nav fnt">MAIN MENU</nav>
-                            <div className="header__logo fnt">ourRoadrips</div>
-                        </header>
-                    </div>
+                    {/*<div className="box-dekor">*/}
+                    {/*    <header className="main_header">*/}
+                    {/*        <nav className="header__nav fnt">MAIN MENU</nav>*/}
+                    {/*        <div className="header__logo fnt">ourRoadrips</div>*/}
+                    {/*    </header>*/}
+                    {/*</div>*/}
 
                     <main className="main_box fnt_extra" id="main" >
                         {loggedIn ? <NewAccount API={API} setLoggedIn={setLoggedIn}/> : <Login API={API}/> }
