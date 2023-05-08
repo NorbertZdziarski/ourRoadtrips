@@ -4,6 +4,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
 
     const [newCarName, setNewCarName] = useState("")
     const [newCarBrand, setNewCarBrand] = useState("")
+    const [newVehicle, setNewVehicle] = useState("")
     const [newCarType, setNewCarType] = useState("")
     const [newCarEngineFuel, setNewCarEngineFuel] = useState("")
     const [newCarEnginePower, setNewCarEnginePower] = useState("")
@@ -15,8 +16,10 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
 
         userCars[idCar] = {
             carId: idCar,
+            carKey: "",
             carBrand: (newCarBrand ? newCarBrand : selectedCar.carBrand),
             carName: (newCarName ? newCarName : selectedCar.carName),
+            vehicle: (newVehicle ? newVehicle: selectedCar.vehicle),
             carType: (newCarType ? newCarType : selectedCar.carType),
             carEngineFuel: (newCarEngineFuel ? newCarEngineFuel : selectedCar.carEngineFuel),
             carEnginePower: (newCarEnginePower ? newCarEnginePower : selectedCar.carEnginePower),
@@ -55,7 +58,16 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
 
     return (
         <div className="fnt_userpanel">
-            <p> change your car</p>
+            <p> vehicle type:</p>
+
+            <select onChange={() => setNewVehicle(event.target.value)}>
+                <option value="---"> </option>
+                <option value="car">car</option>
+                <option value="bike">bike</option>
+                <option value="4x4">4x4</option>
+                <option value="camper">Camper</option>
+                <option value="other">other</option>
+            </select>
             <p> Producent </p>
             <section>
                 <input
@@ -77,7 +89,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
              </section>
             <section>
 
-                <p> engine fuel</p>
+                <p> engine fuel:</p>
                 {/*<select multiple={true} value={['B', 'C']}>*/}
                 <select onChange={() => setNewCarEngineFuel(event.target.value)}>
                     <option value="---"> </option>

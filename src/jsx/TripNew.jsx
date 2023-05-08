@@ -14,15 +14,19 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) 
     // }
 
     function handleAddTrip(userId, userTrips) {
+        let temporaryTripKey = userId + 'T' + (userTrips.length)
         // if (newPassword === newPasswordChk) {
             const addNewTrip = {
                 tripId: (userTrips.length),
+                tripKey: temporaryTripKey,
                 tripName: newTripName,
                 tripDescription: newTripDescription ,
                 tripType: newTripType,
                 tripCountry: newTripCountry,
                 tripCar: newTripCar,
-                tripPhoto: newTripPhoto
+                tripPhoto: newTripPhoto,
+                tripLikes: [],
+                tripPublic: true
             }
 
             userTrips.push(addNewTrip)

@@ -38,11 +38,9 @@ function MainPage({userNameLog, userSurnameLog, userCars, userTrips, usersId, AP
     const PrintMainPage = () => {
         return (
             <div className="mainPageDiv">
-                    <div className="mainPageStyle" >
-                        {allTrips.map((trip, i) => <button key={`b${i}`} className="clickPage" onClick={()=> showTripLook({trip}) }><SmallShowTrip key={i} trip = {trip} i ={i}/></button>)}
-                    </div>
-                {/*<CustomScroll flex="1"><div>dffdsfs</div>*/}
-                {/*</CustomScroll>*/}
+                <div className="mainPageStyle" >
+                    {allTrips.map((trip, i) => <button key={`b${i}`} className="clickPage" onClick={()=> showTripLook({trip}) }><SmallShowTrip key={i} trip = {trip} i ={i}/></button>)}
+                </div>
             </div>
         )
     }
@@ -118,7 +116,7 @@ function MainPage({userNameLog, userSurnameLog, userCars, userTrips, usersId, AP
                         <button onClick={()=>setChoosePage(3)} className="mainMenu__user1"></button>
                         <button onClick={()=>setChoosePage(4)} className="mainMenu__button"></button>
                     </div>
-                    <p>{userNameLog}</p>
+                    <p className="fnt_header__username">{userNameLog}</p>
                 </header>
                 <div className="box">
                 <ChooseFunction

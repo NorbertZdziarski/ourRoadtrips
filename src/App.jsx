@@ -20,7 +20,7 @@ function App() {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setBackgroundImage(prevIndex => (prevIndex + 1) % photoGallery.length);
-        }, 10000);
+        }, 10000000);
         return () => {
             clearInterval(intervalId);
         };

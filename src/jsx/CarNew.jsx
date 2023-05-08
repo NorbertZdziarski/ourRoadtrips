@@ -8,6 +8,7 @@ function CarNew({userId, API, userCars, setSectionSel}) {
     const [newCarDescription, setNewCarDescription] = useState('');
     const [newCarType, setNewCarType] = useState('');
     const [newCarPhoto, setNewPhoto] = useState('');
+    const [newVehicle, setNewVehicle] = useState('');
 
 
     // function checkCorrect() {
@@ -15,13 +16,15 @@ function CarNew({userId, API, userCars, setSectionSel}) {
     // }
 
     function handleAddCar(userId, userCars) {
-
+        let temporaryCarKey = userId + 'C' + (userCars.length)
             // if (newPassword === newPasswordChk) {
-        console.log(userCars)
+
                 const addNewCar = {
                     carId: (userCars.length),
+                    carKey: temporaryCarKey,
                     carName: newCarName,
                     carBrand: newCarBrand,
+                    vehicle: newVehicle,
                     carType: newCarType,
                     tripType: newCarEngineFuel,
                     tripCountry: newCarEnginePower,
@@ -56,7 +59,16 @@ function CarNew({userId, API, userCars, setSectionSel}) {
 
     return (
         <div className="newAccount_main fnt_userpanel">
-            <p> change your car</p>
+            <p> vehicle type:</p>
+
+            <select onChange={() => setNewVehicle(event.target.value)}>
+                <option value="---"> </option>
+                <option value="car">car</option>
+                <option value="bike">bike</option>
+                <option value="4x4">4x4</option>
+                <option value="camper">Camper</option>
+                <option value="other">other</option>
+            </select>
             <p> Producent </p>
             <section>
                 <input

@@ -22,9 +22,7 @@ function Login({API}) {
         fetch(`${API}/profile`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 setDatabas(data);
-                console.log('--------')
             })
             .catch(error => {
                 console.log(error);
@@ -37,7 +35,7 @@ function Login({API}) {
         let tablica = databas[i].trips
         if (tablica.length > 0) {
             for (let j = 0; j < tablica.length; j++) {
-                console.log(tablica[j])
+
                 databaseTrips.push(tablica[j])
             }
         }

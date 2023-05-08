@@ -11,22 +11,38 @@ function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel
     const [newTripCountry, setNewTripCountry] = useState("")
     const [newTripCar, setNewTripCar] = useState("")
     const [newTripPhoto, setNewTripPhoto] = useState("")
+    const [newTripPublic, setNewTripPublic] = useState(true)
 
 
 
-    const saveData = (id, idTrip) => {
-console.log(idTrip)
+    const saveData = (id, idTrip, del) => {
+
+        if (del) {
+            userTrips[idTrip] = {
+                tripId: idTrip,
+                tripKey: selectedTrip.tripKey,
+                tripName: "",
+                tripDescription: "",
+                tripType: "",
+                tripCountry: "",
+                tripCar: "",
+                tripPhoto: "",
+                tripLikes: "",
+                tripPublic: false}
+        } else {
         userTrips[idTrip] = {
             tripId: idTrip,
+            tripKey: selectedTrip.tripKey,
             tripName: (newTripName ? newTripName : selectedTrip.tripName),
             tripDescription: (newTripDescription ? newTripDescription : selectedTrip.tripDescription),
             tripType: (newTripType ? newTripType : selectedTrip.tripType),
             tripCountry: (newTripCountry ? newTripCountry : selectedTrip.tripCountry),
             tripCar: (newTripCar ? newTripCar : selectedTrip.tripCar),
-            tripPhoto: (newTripPhoto ? newTripPhoto : selectedTrip.carPhoto)
-        };
-        //
-        // // userTrips.push(addNewTrip)
+            tripPhoto: (newTripPhoto ? newTripPhoto : selectedTrip.carPhoto),
+            tripLikes: selectedTrip.tripLikes,
+            tripPublic: (newTripPublic ? newTripPublic : selectedTrip.tripPublic)
+        };}
+
         const saveTrip = {
             "trips" : userTrips
         }
@@ -43,9 +59,7 @@ console.log(idTrip)
             })
             .then(response => response.json())
             .then(data => {
-        //         // setUserName(newName)
-        //         // setUserSurname(newSurname)
-        //         console.log('then data vvv')
+
                 console.log(data);
             })
             .catch(error => {
@@ -67,25 +81,10 @@ console.log(idTrip)
         const handleUpload = () => {
             // kod, który wykorzystuje plik
             console.log(selectedFile);
-            <img src={selectedFile.name}/>
+            // <img src={selectedFile.name}/>
 
         };
 
-        // return (
-        //     <div className="addFile">
-        //
-        //
-        //     </div>
-        // );
-    // }
-
-
-    // function fileUp() {
-    //     console.log('d-------------d');
-    //     return (<FileUpload
-    //             userId = {'ffff'}
-    //             />);
-    // }
 
     return (
         <div className="fnt_userpanel">
@@ -145,7 +144,8 @@ console.log(idTrip)
                 <button onClick={handleUpload}>Upload</button>
             </section>
             <section>
-                <button onClick={() => saveData(userId, selectedTrip.tripId)}>Save</button>
+                <button onClick={() => saveData(userId, selectedTrip.tripId, false)}>Save</button>
+                <button onClick={() => saveData(userId, selectedTrip.tripId, true)}>Delete</button>
                 {/*<button onClick={() => fileUp}>Add File</button>*/}
                 <button onClick={() => setSectionSel(1)}>Cancel</button>
                 {/*<FileUpload*/}

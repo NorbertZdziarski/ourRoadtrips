@@ -27,3 +27,9 @@ $fontFalmily: 'Quicksand', sans-serif;
   color: rgba(255, 255, 255, 0.96);
 
 }
+.fnt_header__username {
+  @include familyFont;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.96);
+  margin-right: 1.5rem;
+}

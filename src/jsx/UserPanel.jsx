@@ -54,7 +54,6 @@ function UserPanel({userName, userSurname, userCars, userTrips, usersId, API, se
         <div className="fnt">
             <section className="userpanel_bar">
                 <div>
-                    <button className="btn_userpanel_bar fnt_userpanel" onClick={() => setLoggedIn(false)}>  back to main menu </button>
                     <button className="btn_userpanel_bar fnt_userpanel" onClick={() => setSectionSel(1)}>  show trips & cars </button>
                     <button className="btn_userpanel_bar fnt_userpanel" onClick={() => setSectionSel(2)}>  Add new trip </button>
                     <button className="btn_userpanel_bar fnt_userpanel" onClick={() => setSectionSel(3)}>  Add new Car</button>
