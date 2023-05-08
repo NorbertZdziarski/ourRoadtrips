@@ -2,8 +2,6 @@
 @import "variables";
 @import "fonts";
 @import "box-style";
-//@import 'sass-colors';
-
 
 
 @mixin flexCenter {
@@ -47,26 +45,19 @@ html {
   background-color: rgba(255, 255, 0, 0.09);
   padding: 0 1rem;
 }
-
-.main__bgr__img {
-
-  height: 100vh;
-  background-attachment: fixed;
-  background-image: url("../../warehouse/images/slideshow/bgr_bmw.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  &:after {
-  content: "";
-  position: absolute;
-    left: 0;
-    top: 0;
+.main__bgr__img_parent {
+  position: relative;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.46);
-    box-shadow: inset 0 0 50px black;
 }
+.main__bgr__img {
+  position: fixed;
+  object-fit: cover;
+  z-index: -5;
+  width: 100%;
+  height: 100%;
 }
+
 .newAccount_main {
 
 }
@@ -81,6 +72,7 @@ html {
   z-index: 10;
   max-width: $widthColumnCenter;
   width: 100%;
+  height: 100vh;
   display: block;
   //background-color: rgba(0, 0, 0, 0.4);
   position: relative;
@@ -168,9 +160,9 @@ html {
 
 .main_header {
 
-  padding: 1.5rem 0;
+  //padding: 1.5rem 0;
   width: 100%;
-  height: 3rem;
+  height: $headerHight;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -281,7 +273,17 @@ html {
   color:white;
   justify-content: space-between;
   align-items: start;
-  //overflow: hidden;
+  &:after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.46);
+    box-shadow: inset 0 0 50px black;}
+
 }
 
 .main_box {
@@ -302,13 +304,31 @@ html {
 
 }
 
+.mainPageDiv {
+  max-height: $mainBoxHight;
+}
+
 .mainPageStyle {
   display: flex;
-  //flex-direction: column;
-  margin-top: calc($headerHight + $headerLeyoutHight);
+  overflow-y: scroll;
+  height: calc($mainBoxHight - 3rem);
+
   align-items: flex-start;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  &::-webkit-scrollbar {width: 1rem}
+  &::-webkit-scrollbar-thumb {
+    background: rgba(243, 243, 243, 0.56);
+    border-radius: 50%;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(243, 243, 243, 0.76);
+
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0);
+  }
 }
 .userpanel_ico {
   width: 80px;
@@ -370,3 +390,10 @@ html {
 
 }
 
+
+.addFile {
+  width: 500px;
+  height: 250px;
+  z-index: 100;
+  background-color: rgba(23, 23, 23, 0.75);
+}

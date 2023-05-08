@@ -2,10 +2,13 @@ $globalMarginWidth: 120px;
 $cornerCut: 20px;
 
 $widthColumnCenter: calc(100% - ($globalMarginWidth * 2));
+$countriesineurope: ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"];
 
 $headerHight: 5rem;
 $headerLeyoutHight: 12rem;
 $layoutOffset: 1.5rem;
+
+$mainBoxHight: calc(100vh - $headerHight);
 
 $sumOfConstansLayout: calc($headerHight + $headerLeyoutHight + (2 * $layoutOffset));
 
@@ -18,4 +21,4 @@ $layoutDetails: calc(0.3* (100vh - $sumOfConstansLayout));
 
 $btnNavigationColor: rgba(243, 243, 243, 0.6);
 $bgrPanelColor: rgba(245, 245, 245, 0.8);
-$fontSecondaryColor: rgb(243, 243, 243)
+$fontSecondaryColor: rgb(243, 243, 243);

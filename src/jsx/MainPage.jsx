@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import UserPanel from "./UserPanel.jsx";
 import SmallShowTrip from "./SmallShowTrip.jsx";
-import CustomScroll from "react-custom-scroll";
+
+
 import TripLook from "./TripLook.jsx";
 import CarNew from "./CarNew.jsx";
-
-
 
 // function printTrips(trip, i) {
 //     return <div key={i} className="list_item">{trip.tripName}
@@ -13,8 +12,8 @@ import CarNew from "./CarNew.jsx";
 //     </div>
 // }
 
-function MainPage({userNameLog, userSurnameLog, userCars, userTrips, usersId, API, allTrips}) {
-console.log('Main Page')
+function MainPage({userNameLog, userSurnameLog, userCars, userTrips, usersId, API, allTrips, setLoggedInMain, setLoggedUser, setLoggedInLogin}) {
+
     const [loggedIn, setLoggedIn] = useState(true);
     const [choosePage, setChoosePage] = useState(1)
     const [chooseTtip, setChooseTrip] = useState(1)
@@ -22,10 +21,9 @@ console.log('Main Page')
 
 
     function showTripLook({trip}) {
-        console.log('showTripLook')
-        console.log(trip)
+
         setChooseTrip(trip)
-        setChoosePage(4)
+        setChoosePage(5)
 
 
         // setLoggedIn(true)
@@ -39,12 +37,12 @@ console.log('Main Page')
 
     const PrintMainPage = () => {
         return (
-            <div >
-                <CustomScroll heightRelativeToParent="calc(100% - 20px)">
-                    <div className="mainPageStyle">
+            <div className="mainPageDiv">
+                    <div className="mainPageStyle" >
                         {allTrips.map((trip, i) => <button key={`b${i}`} className="clickPage" onClick={()=> showTripLook({trip}) }><SmallShowTrip key={i} trip = {trip} i ={i}/></button>)}
                     </div>
-                </CustomScroll>
+                {/*<CustomScroll flex="1"><div>dffdsfs</div>*/}
+                {/*</CustomScroll>*/}
             </div>
         )
     }
@@ -66,6 +64,8 @@ console.log('Main Page')
             case 1:
                 return <PrintMainPage/>;
             case 2:
+                return ;
+            case 3:
                 return <UserPanel
                     userName = {userNameLog}
                     userSurname = {userSurnameLog}
@@ -76,15 +76,21 @@ console.log('Main Page')
                     setLoggedIn = {setLoggedIn}
 
                     allTrips = {allTrips} />;
-            case 3:
-                return (<User>
-                    {userNameLog}
-                    <button onClick={(()=>setLoggedIn(true))} className="mainMenu__button"></button>
-                    </User>);
+
             case 4:
-                return <TripLook
-                    trip={chooseTtip}
-                />
+                setLoggedUser('');
+                setLoggedInMain(false);
+                setLoggedInLogin(false);
+                return
+
+
+                // (<User>
+                //     {userNameLog}
+                //     <button onClick={(()=>setLoggedIn(true))} className="mainMenu__button"></button>
+                // </User>);
+                // return <TripLook
+                //     trip={chooseTtip}
+                // />
 
                 // <CarNew
                 //     userId={usersId}
@@ -92,6 +98,10 @@ console.log('Main Page')
                 //     userCars={userCars}
                 //     // setSectionSel={setSectionSel}
                 // />;
+            case 5:
+            return <TripLook
+                trip={chooseTtip}
+            />
             default:
                 return <p>{value}</p>;
 

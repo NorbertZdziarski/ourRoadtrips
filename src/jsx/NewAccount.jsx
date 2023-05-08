@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function NewAccount({API, setLoggedIn}) {
+function NewAccount({API, setLoggedInNA, setLoggedInLogin}) {
     const [newNick, setNewNick] = useState('');
     const [newName, setNewName] = useState('');
     const [newSurname, setNewSurname] = useState('');
@@ -11,7 +11,7 @@ function NewAccount({API, setLoggedIn}) {
     //
     // }
     console.log(' NEW ACCOUNT')
-
+    setLoggedInLogin(true);
     function handleAddUser() {
         if (newPassword === newPasswordChk) {
             const dane = {
@@ -39,7 +39,8 @@ function NewAccount({API, setLoggedIn}) {
                 .catch(error => {
                     console.log(error);
                 });
-            setLoggedIn(false);
+            setLoggedInLogin(false);
+            setLoggedInNA(false);
         }
     }
 

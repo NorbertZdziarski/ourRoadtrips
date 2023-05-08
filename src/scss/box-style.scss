@@ -1,16 +1,16 @@
 @import "variables";
 .box {
+  box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.34);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: 1rem;
-  height: auto;
+  height: $mainBoxHight;
   margin: 0;
-  //overflow-y: scroll;
 }
 .box-top {
   background-color: rgba(0, 0, 0, 0.34);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 1rem;
+  //padding: 1rem;
   height: auto;
 }
 @mixin boxDecor($width, $height, $color: $bgrPanelColor) {
@@ -21,23 +21,23 @@
   font-size: 1.5rem;
   margin: .2rem auto calc($cornerCut * 3);
   position: relative;
-  &:before {
-    content: "";
-    width: calc(100% - $cornerCut);
-    position: absolute;
-    bottom: -$cornerCut;
-    right: 0;
-    border-left: $cornerCut solid transparent;
-    border-top: $cornerCut solid $color;
-  }
-  &:after {
-    content: "";
-    width: calc(100% - $cornerCut);
-    position: absolute;
-    top: -$cornerCut;
-    left: 0;
-    border-right: $cornerCut solid transparent;
-    border-bottom: $cornerCut solid $color;}
+  //&:before {
+  //  content: "";
+  //  width: calc(100% - $cornerCut);
+  //  position: absolute;
+  //  bottom: -$cornerCut;
+  //  right: 0;
+  //  border-left: $cornerCut solid transparent;
+  //  border-top: $cornerCut solid $color;
+  //}
+  //&:after {
+  //  content: "";
+  //  width: calc(100% - $cornerCut);
+  //  position: absolute;
+  //  top: -$cornerCut;
+  //  left: 0;
+  //  border-right: $cornerCut solid transparent;
+  //  border-bottom: $cornerCut solid $color;}
 }
 .box-content {
  @include boxDecor(490px, 250px);

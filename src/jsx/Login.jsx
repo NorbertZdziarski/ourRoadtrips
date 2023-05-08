@@ -1,6 +1,7 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../scss/main.scss'
 import MainPage from "./MainPage.jsx";
+import NewAccount from "./NewAccount.jsx";
 
 
 function Login({API}) {
@@ -10,6 +11,8 @@ function Login({API}) {
     const [newUser, setNewUser] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedInNA, setLoggedInNA] = useState(false);
+    const [loggedInLogin, setLoggedInLogin] = useState(false);
 
     useEffect(()=>{
         getAllUsers();
@@ -46,6 +49,7 @@ function Login({API}) {
             if ((user.name === newUser) && (user.password === newPassword)) {
                 setLoggedUser(user)
                 setLoggedIn(true)
+                setLoggedInLogin(true);
                 console.log('ok')}
              else {
 
@@ -61,7 +65,15 @@ function Login({API}) {
     const inputNewPassword = (event) => {
         setNewPassword(event.target.value)}
 
-
+    function newAcc() {
+        setNewUser("")
+        setNewPassword("")
+        setLoggedInNA(true)
+        // return <NewAccount
+        //     API={API}
+        //     setLoggedIn = {setLoggedIn}
+        //     />
+    }
 
     return (
         <>
@@ -74,7 +86,16 @@ function Login({API}) {
                 usersId={loggedUser.id}
                 API = {API}
                 allTrips = {databaseTrips}
-            />) :
+                setLoggedInMain = {setLoggedIn}
+                setLoggedUser = {setLoggedUser}
+                setLoggedInLogin = {setLoggedInLogin}
+            />) : '' }
+            {loggedInNA ? <NewAccount
+                API={API}
+                setLoggedInNA = {setLoggedInNA}
+                setLoggedInLogin = {setLoggedInLogin}
+            /> : ''}
+            {loggedInLogin ? '' :
             <div className="login_main_div">
                 <div className="login_box">
                     <p> Login </p>
@@ -86,7 +107,7 @@ function Login({API}) {
                         placeholder='enter your account name'
                     />
                     <input
-                        type="text"
+                        type="password"
                         className="box_input"
                         value={newPassword}
                         onChange={inputNewPassword}
@@ -94,11 +115,10 @@ function Login({API}) {
                     />
                     <div className="login_box-buttons">
                         <button className="btn" onClick={()=> checkLogin()}>Login</button>
-                        {/*<button className="btn" onClick={()=> newAcc()}>Create an account </button>*/}
+                        <button className="btn" onClick={()=> newAcc()}>Create an account </button>
                     </div>
                 </div>
-            </div> }
-
+            </div>}
         </>
     )
 }

@@ -1,4 +1,7 @@
 import React, {useState} from 'react';
+import FileUpload from "./TakeFile.jsx";
+
+
 
 function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel}) {
 
@@ -50,6 +53,39 @@ console.log(idTrip)
             });
         setSectionSel(1);
     }
+
+
+    // function FileUpload({userId}) {
+        const [selectedFile, setSelectedFile] = useState(null);
+
+        console.log('----M------');
+
+        const handleFileChange = (event) => {
+            setSelectedFile(event.target.files[0]);
+        };
+
+        const handleUpload = () => {
+            // kod, który wykorzystuje plik
+            console.log(selectedFile);
+            <img src={selectedFile.name}/>
+
+        };
+
+        // return (
+        //     <div className="addFile">
+        //
+        //
+        //     </div>
+        // );
+    // }
+
+
+    // function fileUp() {
+    //     console.log('d-------------d');
+    //     return (<FileUpload
+    //             userId = {'ffff'}
+    //             />);
+    // }
 
     return (
         <div className="fnt_userpanel">
@@ -105,10 +141,16 @@ console.log(idTrip)
             </section>
             <section>
                 <p>add trip photo</p>
+                <input type="file" onChange={handleFileChange} />
+                <button onClick={handleUpload}>Upload</button>
             </section>
             <section>
                 <button onClick={() => saveData(userId, selectedTrip.tripId)}>Save</button>
+                {/*<button onClick={() => fileUp}>Add File</button>*/}
                 <button onClick={() => setSectionSel(1)}>Cancel</button>
+                {/*<FileUpload*/}
+                {/*    userId = {'ffff'}*/}
+                {/*/>;*/}
             </section>
         </div>
     );
