@@ -1,22 +1,31 @@
 @import "variables";
 .login_main_div {
+  height: 100vh;
 @include flexCenter;
   margin-inline: auto;
 justify-content: center;
 }
 
-.login__panel {
-
+.login__header {
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .login_box {
   box-sizing: border-box;
+
   margin: 1.5rem;
   padding: 1.5rem;
   color: $fontSecondaryColor;
   width: 50rem;
   height: 30rem;
+  box-shadow: 0 0 30px 10px rgba(0,0,0,0.3);
   background-color: $btnNavigationColor;
+  @include rwd {
+    width: calc(100% - 30px);
+    flex-wrap: nowrap;
+    font-size: 3rem;
+  }
 
 }
 .login_box-buttons {

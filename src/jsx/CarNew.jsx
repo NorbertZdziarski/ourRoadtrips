@@ -1,6 +1,12 @@
 import React, {useState} from 'react';
 
 function CarNew({userId, API, userCars, setSectionSel}) {
+
+    const vehicleTypes=["car", "bike", "4x4", "camper", "other"];
+    const fuelTypes=["petrol","diesel","electric","hybrid"];
+    const carsTypes=["daily","classic","forFun"];
+
+
     const [newCarBrand, setNewCarBrand] = useState('');
     const [newCarName, setNewCarName] = useState('');
     const [newCarEngineFuel, setNewCarEngineFuel] = useState('');
@@ -60,20 +66,20 @@ function CarNew({userId, API, userCars, setSectionSel}) {
     return (
         <div className="newAccount_main fnt_userpanel">
             <p> vehicle type:</p>
-
-            <select onChange={() => setNewVehicle(event.target.value)}>
-                <option value="---"> </option>
-                <option value="car">car</option>
-                <option value="bike">bike</option>
-                <option value="4x4">4x4</option>
-                <option value="camper">Camper</option>
-                <option value="other">other</option>
+            <select value={newVehicle} onChange={() => setNewVehicle(event.target.value)} className="fnt" >
+                {vehicleTypes.map((vehicleType) => (
+                    <option key={vehicleType} value={vehicleType} className="fnt">
+                        {vehicleType}
+                    </option>
+                ))}
             </select>
+
             <p> Producent </p>
-            <section>
+            <section className="box-section">
                 <input
                     type="text"
                     className="box_input"
+                    maxLength={70}
                     value={newCarBrand}
                     onChange={() => setNewCarBrand(event.target.value)}
                     placeholder= ">>>"
@@ -83,21 +89,32 @@ function CarNew({userId, API, userCars, setSectionSel}) {
                     type="text"
                     className="box_input"
                     value={newCarName}
+                    maxLength={70}
                     onChange={() => setNewCarName(event.target.value)}
                     // onKeyUp={}
                     placeholder= ">>>"
                 />
             </section>
-            <section>
-
-                <p> engine fuel</p>
-                {/*<select multiple={true} value={['B', 'C']}>*/}
-                <select onChange={() => setNewCarEngineFuel(event.target.value)}>
-                    <option value="---"> </option>
-                    <option value="petrol">Petrol</option>
-                    <option value="diesel">Diesel</option>
-                    <option value="electric">Electric</option>
+            <section className="box-section box-section-row">
+                <p> for you</p>
+                <select value={newCarType} onChange={() => setNewCarType(event.target.value)} className="fnt">
+                    {carsTypes.map((carType) => (
+                        <option key={carType} value={carType} className="fnt">
+                            {carType}
+                        </option>
+                    ))}
                 </select>
+                <p> engine fuel</p>
+
+                <select value={newCarEngineFuel} onChange={() => setNewCarEngineFuel(event.target.value)} className="fnt">
+                    {fuelTypes.map((fuelType) => (
+                        <option key={fuelType} value={fuelType} className="fnt">
+                            {fuelType}
+                        </option>
+                    ))}
+                </select>
+
+
                 <p> engine power</p>
                 <input
                     type="number"
@@ -107,20 +124,14 @@ function CarNew({userId, API, userCars, setSectionSel}) {
                     // onKeyUp={}
                     placeholder= ">>>"
                 />
+
+
+
             </section>
             <section>
-                <p> for you</p>
-                {/*<select multiple={true} value={['B', 'C']}>*/}
-                <select onChange={() => setNewCarType(event.target.value)}>
-                    <option value="---"> </option>
-                    <option value="daily">daily</option>
-                    <option value="classic">classic</option>
-                    <option value="forFun">for fun</option>
-                </select>
-            </section>
-            <section>
+                <p> Car Description </p>
                    <textarea
-                       className="box_input"
+                       className="box_input-description"
                        // id=""
                        // name=""
                        value={newCarDescription}
@@ -128,9 +139,9 @@ function CarNew({userId, API, userCars, setSectionSel}) {
                        placeholder='>>>'
                    />
             </section>
-            <section>
-                <button onClick={() => handleAddCar(userId, userCars)}>SAVE</button>
-                <button onClick={() => setSectionSel(1)}>Cancel</button>
+            <section className="div-accept">
+                <button onClick={() => handleAddCar(userId, userCars)} className="btn_save">SAVE</button>
+                <button onClick={() => setSectionSel(1)} className="btn_cancel">Cancel</button>
             </section>
 
 

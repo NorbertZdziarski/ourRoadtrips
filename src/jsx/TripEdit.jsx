@@ -5,14 +5,16 @@ import FileUpload from "./TakeFile.jsx";
 
 function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel}) {
 
+    const countriesInEurope = ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"];
+    const tripTypes = ["recreation", "sightseeing", "extreme"];
+
     const [newTripName, setNewTripName] = useState("")
     const [newTripDescription, setNewTripDescription] = useState("")
-    const [newTripType, setNewTripType] = useState("")
-    const [newTripCountry, setNewTripCountry] = useState("")
-    const [newTripCar, setNewTripCar] = useState("")
+    const [newTripType, setNewTripType] = useState(tripTypes[0])
+    const [newTripCar, setNewTripCar] = useState(userCars[0].carBrand)
     const [newTripPhoto, setNewTripPhoto] = useState("")
     const [newTripPublic, setNewTripPublic] = useState(true)
-
+    const [selectCountry, setSelectCountry] = useState(countriesInEurope[0])
 
 
     const saveData = (id, idTrip, del) => {
@@ -36,7 +38,7 @@ function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel
             tripName: (newTripName ? newTripName : selectedTrip.tripName),
             tripDescription: (newTripDescription ? newTripDescription : selectedTrip.tripDescription),
             tripType: (newTripType ? newTripType : selectedTrip.tripType),
-            tripCountry: (newTripCountry ? newTripCountry : selectedTrip.tripCountry),
+            tripCountry: (selectCountry ? selectCountry : selectedTrip.tripCountry),
             tripCar: (newTripCar ? newTripCar : selectedTrip.tripCar),
             tripPhoto: (newTripPhoto ? newTripPhoto : selectedTrip.carPhoto),
             tripLikes: selectedTrip.tripLikes,
@@ -88,19 +90,21 @@ function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel
 
     return (
         <div className="fnt_userpanel">
-            <h3> edit your trip {selectedTrip.tripId} !</h3>
-            <section>
-                <p> tytuł </p>
+            <h3 className="login__header"> EDIT YOUR TRIP:</h3>
+            <section className="box-section">
+                <p> title: </p>
                 <input
                     type="text"
                     className="box_input"
+                    maxLength={70}
                     value={newTripName}
                     onChange={() => setNewTripName(event.target.value)}
                     // onKeyUp={}
                     placeholder= {selectedTrip.tripName}
                 />
+                <p> description: </p>
                 <textarea
-                    className="box_input"
+                    className="box_input-description"
                     // id=""
                     // name=""
                     value={newTripDescription}
@@ -108,46 +112,50 @@ function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel
                     placeholder='>>>'
                 />
             </section>
-            <section>
+            <section className="box-section box-section-row">
+                <div>
+                    <p> trip type</p>
+                    <select value={newTripType} onChange={() => setNewTripType(event.target.value)} className="fnt">
+                        {tripTypes.map((tripType) => (
+                            <option key={tripType} value={tripType} className="fnt">
+                                {tripType}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <p> where </p>
 
-                <p> trip type</p>
-                {/*<select multiple={true} value={['B', 'C']}>*/}
-                <select onChange={() => setNewTripType(event.target.value)}>
-                    <option value="---"> </option>
-                    <option value="górska">górska</option>
-                    <option value="miejska">miejska</option>
-                    <option value="wyczynowa">wyczynowa</option>
-                </select>
-                <p> where </p>
-                <input
-                    type="number"
-                    className="box_input"
-                    value={newTripCountry}
-                    onChange={() => setNewTripCountry(event.target.value)}
-                    // onKeyUp={}
-                    placeholder= {selectedTrip.tripCountry}
-                />
+                    <select value={selectCountry} onChange={() => setSelectCountry(event.target.value)} className="fnt">
+                        {countriesInEurope.map((country) => (
+                            <option key={country} value={country} className="fnt">
+                                {country}
+                            </option>
+                        ))}
+                    </select>
+
+                </div>
+                <div>
+                    <p>choose a vehicle</p>
+                    <select value={newTripCar} onChange={() => setNewTripCar(event.target.value)} className="fnt">
+                        {userCars.map((userCar) => (
+                            <option key={userCar.carKey} value={userCar.carBrand} className="fnt">
+                                {userCar.carBrand}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </section>
-            <section>
-                <p> for you</p>
-                {/*<select multiple={true} value={['B', 'C']}>*/}
-                <select onChange={() => setNewTripCar(event.target.value)}>
-                    {/*<option value="---"> </option>*/}
-                    {/*<option value="daily">daily</option>*/}
-                    {/*<option value="classic">classic</option>*/}
-                    {/*<option value="forFun">for fun</option>*/}
-                </select>
-            </section>
-            <section>
+            <section className="box-section under_construction">
                 <p>add trip photo</p>
                 <input type="file" onChange={handleFileChange} />
-                <button onClick={handleUpload}>Upload</button>
+                <button onClick={handleUpload} className="btn_cancel">Upload</button>
             </section>
-            <section>
-                <button onClick={() => saveData(userId, selectedTrip.tripId, false)}>Save</button>
-                <button onClick={() => saveData(userId, selectedTrip.tripId, true)}>Delete</button>
+            <section className="div-accept">
+                <button onClick={() => saveData(userId, selectedTrip.tripId, false)} className="btn_save">Save</button>
+                <button onClick={() => saveData(userId, selectedTrip.tripId, true)} className="btn_delete">Delete</button>
                 {/*<button onClick={() => fileUp}>Add File</button>*/}
-                <button onClick={() => setSectionSel(1)}>Cancel</button>
+                <button onClick={() => setSectionSel(1)} className="btn_cancel">Cancel</button>
                 {/*<FileUpload*/}
                 {/*    userId = {'ffff'}*/}
                 {/*/>;*/}

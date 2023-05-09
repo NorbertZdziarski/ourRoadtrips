@@ -1,14 +1,21 @@
 @import "reset";
+@import "rwd";
 @import "variables";
 @import "fonts";
-@import "box-style";
+@import "buttons";
 
+@import "box-style";
 
 @mixin flexCenter {
   display: flex;
   align-items: center;
+  @include rwd {
+    display: block;
+  }
 }
 @import "login";
+
+
 root {
   border: 0;
   margin: 0;
@@ -44,6 +51,9 @@ html {
   justify-content: space-between;
   background-color: rgba(255, 255, 0, 0.09);
   padding: 0 1rem;
+  @include rwd {
+    display: block;
+  }
 }
 .main__bgr__img_parent {
   position: relative;
@@ -65,97 +75,33 @@ html {
   z-index: 10;
   max-width: $globalMarginWidth;
   width: 100%;
+  @include rwd {
+    width: 0;
+  }
 }
 
 .column_center {
 
   z-index: 10;
-  max-width: $widthColumnCenter;
   width: 100%;
   height: 100vh;
   display: block;
   //background-color: rgba(0, 0, 0, 0.4);
   position: relative;
+  @include rwd {
+    min-width: $widthColumnCenter;
+  }
 }
 
 .column_right {
   z-index: 10;
   max-width: $globalMarginWidth;
   width: 100%;
-
-}
-.btn {
-  width: 50%;
-  height: 3rem;
-  //margin: 2px;
-  background-color: #ffffff;
-  padding: .5rem;
-  &:hover {
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.49);
-    background-color: rgba(30, 144, 255, 0.5);
-}
-}
-.btn_main {
-  background-color: rgba(255, 255, 255, 0);
-  width: 10rem;
-  height: 20%;
-}
-.btn_main_lft {
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-right: 0;
-  border-left: 5rem solid $btnNavigationColor;
-  border-bottom: 5rem solid transparent;
-  &:after {
-    position: absolute;
-    content: "";
-    z-index: 20;
-    left: -60%;
-    top: 45%;
-    rotate: 45deg;
-    width: 3rem;
-    height: 3rem;
-    border-left: 4px solid black;
-    border-bottom: 4px solid black;
-
-  }
-  &:hover {
-    border-left: 5rem solid rgba(255, 255, 255, 0.8);
+  @include rwd {
+    width: 0;
   }
 }
 
-.btn_main_rgt {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  border-left: 0;
-  border-right: 5rem solid $btnNavigationColor;
-  border-top: 5rem solid transparent;
-  &:after {
-    position: absolute;
-    content: "";
-    z-index: 20;
-    right: -60%;
-    bottom: 45%;
-    rotate: 45deg;
-    width: 3rem;
-    height: 3rem;
-    border-right: 4px solid black;
-    border-top: 4px solid black;}
-  &:hover {
-    border-right: 5rem solid rgba(255, 255, 255, 0.8);
-  }
-}
-
-.btn_userpanel_bar {
-  background-color: rgba(0, 0, 0, 0);
-  border:  1px solid rgba(0, 0, 0, 0);
-  margin-right: 2rem;
-  &:hover {
-    border-bottom: 1px solid dodgerblue;
-  }
-}
 
 
 .main_header {
@@ -266,7 +212,20 @@ html {
   display: flex;
   align-items: center;
 }
+.new_account {
+  //@include flexCenter;
+  padding: 5rem;
 
+}
+
+.new_account-div {
+  margin-bottom: 2rem;
+}
+.div-accept {
+  display: flex;
+  justify-content:center;
+  margin-bottom: 3rem;
+}
 
 .main__div {
   @include flexCenter;
@@ -283,6 +242,8 @@ html {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.46);
     box-shadow: inset 0 0 50px black;}
+
+
 
 }
 
@@ -329,6 +290,14 @@ html {
   &::-webkit-scrollbar-track {
     background: rgba(0,0,0,0);
   }
+
+  @include rwd {
+
+    //display: block;
+    justify-content: center;
+
+  }
+
 }
 .userpanel_ico {
   width: 80px;

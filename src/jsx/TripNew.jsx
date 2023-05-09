@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 
 function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) {
+
+    const countriesInEurope = ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"];
+    const tripTypes = ["recreation", "sightseeing", "extreme"];
+
     const [newTripName, setNewTripName] = useState('');
     const [newTripDescription, setNewTripDescription] = useState('');
     const [newTripType, setNewTripType] = useState('');
@@ -57,63 +61,80 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) 
     return (
         <div className="newAccount_main fnt_userpanel">
             <section>
-                <h2>Dodaj swoją wyprawę</h2>
-                <p> tytuł </p>
-                <input
-                    type="text"
-                    className="box_input"
-                    value={newTripName}
-                    onChange={() => setNewTripName(event.target.value)}
-                    // onKeyUp={}
-                    // placeholder= {selectedTrip.tripName}
-                />
-                <textarea
-                    className="box_input"
-                    // id=""
-                    // name=""
-                    value={newTripDescription}
-                    onChange={() => setNewTripDescription(event.target.value)}
-                    placeholder='>>>'
-                />
-            </section>
-            <section>
+                <h3 className="login__header"> ADD YOUR TRIP:</h3>
+                <section className="box-section">
+                    <p> title: </p>
+                    <input
+                        type="text"
+                        className="box_input"
+                        maxLength={70}
+                        value={newTripName}
+                        onChange={() => setNewTripName(event.target.value)}
+                        placeholder= '>>>'
+                    />
+                    <p> description: </p>
+                    <textarea
+                        className="box_input-description"
+                        value={newTripDescription}
+                        onChange={() => setNewTripDescription(event.target.value)}
+                        // id=""
+                        // name=""
+                        placeholder='>>>'
+                    />
+                </section>
+                <section className="box-section box-section-row">
+                    <div>
+                        <p> trip type</p>
+                        <select value={newTripType} onChange={() => setNewTripType(event.target.value)} className="fnt">
+                            {tripTypes.map((tripType) => (
+                                <option key={tripType} value={tripType} className="fnt">
+                                    {tripType}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <p> where </p>
 
-                <p> trip type</p>
+                        <select value={newTripCountry} onChange={() => setNewTripCountry(event.target.value)} className="fnt">
+                            {countriesInEurope.map((country) => (
+                                <option key={country} value={country} className="fnt">
+                                    {country}
+                                </option>
+                            ))}
+                        </select>
 
-                <select onChange={() => setNewTripType(event.target.value)}>
-                    <option value="---"> </option>
-                    <option value="górska">górska</option>
-                    <option value="miejska">miejska</option>
-                    <option value="wyczynowa">wyczynowa</option>
-                </select>
-                <p> where </p>
-                <input
-                    type="number"
-                    className="box_input"
-                    value={newTripCountry}
-                    onChange={() => setNewTripCountry(event.target.value)}
-                    // onKeyUp={}
-                    // placeholder= {selectedTrip.tripCountry}
-                />
-            </section>
-            <section>
-                <p> for you</p>
-                {/*<select value={[userCars.name]}>*/}
-                <select onChange={() => setNewTripCar(event.target.value)}>
-                    {/*<option value="---"> </option>*/}
-                    {/*<option value="daily">daily</option>*/}
-                    {/*<option value="classic">classic</option>*/}
-                    {/*<option value="forFun">for fun</option>*/}
-                </select>
-            </section>
-            <section>
-                <p>add trip photo</p>
-            </section>
-            <section>
-                <button onClick={() => handleAddTrip(userId, userTrips)}>SAVE</button>
-                <button onClick={() => setSectionSel(1)}>Cancel</button>
-            </section>
+                    </div>
+                    <div>
+                        <p>choose a vehicle</p>
+                        <select value={newTripCar} onChange={() => setNewTripCar(event.target.value)} className="fnt">
+                            {userCars.map((userCar) => (
+                                <option key={userCar.carKey} value={userCar.carBrand} className="fnt">
+                                    {userCar.carBrand}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </section>
+                <section className="box-section under_construction">
+                    <p>add trip photo</p>
+                {/*    <input type="file" onChange={handleFileChange} />*/}
+                {/*    <button onClick={handleUpload} className="btn_cancel">Upload</button>*/}
+                </section>
+                <section className="div-accept">
 
+                {/*    <button onClick={() => saveData(userId, selectedTrip.tripId, false)} className="btn_save">Save</button>*/}
+                    <button onClick={() => handleAddTrip(userId, userTrips)} className="btn_save">Save</button>
+
+                    {/*<button onClick={() => fileUp}>Add File</button>*/}
+
+                    <button onClick={() => setSectionSel(1)} className="btn_cancel">Cancel</button>
+
+                    {/*<FileUpload*/}
+                    {/*    userId = {'ffff'}*/}
+                    {/*/>;*/}
+                </section>
+            </section>
         </div>
     );
 }

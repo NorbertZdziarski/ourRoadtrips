@@ -29,6 +29,18 @@
           "tripCountry": "180",
           "carDescription": "przecinak",
           "tripPhoto": ""
+        },
+        {
+          "carId": 2,
+          "carKey": "1C2",
+          "carName": "hghg",
+          "carBrand": "ghghg",
+          "vehicle": "4x4",
+          "carType": "",
+          "tripType": "petrol",
+          "tripCountry": "666666666666666666666666666666666666",
+          "carDescription": "",
+          "tripPhoto": ""
         }
       ],
       "trips": [
@@ -67,6 +79,18 @@
         {
           "tripId": 3,
           "tripKey": "1T3",
+          "tripName": "",
+          "tripDescription": "",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": "",
+          "tripLikes": "",
+          "tripPublic": false
+        },
+        {
+          "tripId": 4,
+          "tripKey": "1T4",
           "tripName": "",
           "tripDescription": "",
           "tripType": "",

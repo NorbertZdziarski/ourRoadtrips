@@ -37,7 +37,7 @@ function App() {
         </div>
         <div className="main__div ">
             <div className="column_left">
-                <button className="btn_main btn_main_lft" onClick={() =>setBackgroundImage(photoGallery[0])}></button>
+                {/*<button className="btn_main btn_main_lft" onClick={() =>setBackgroundImage(photoGallery[0])}></button>*/}
             </div>
             <div className="column_center">
                 {/*<div className="box-dekor">*/}
@@ -55,7 +55,7 @@ function App() {
 
 
             <div className="column_right">
-                <button className="btn_main btn_main_rgt" onClick={() => setBackgroundImage(photoGallery[1])}></button>
+                {/*<button className="btn_main btn_main_rgt" onClick={() => setBackgroundImage(photoGallery[1])}></button>*/}
             </div>
         </div>
 

@@ -21,43 +21,43 @@
   font-size: 1.5rem;
   margin: .2rem auto calc($cornerCut * 3);
   position: relative;
-  //&:before {
-  //  content: "";
-  //  width: calc(100% - $cornerCut);
-  //  position: absolute;
-  //  bottom: -$cornerCut;
-  //  right: 0;
-  //  border-left: $cornerCut solid transparent;
-  //  border-top: $cornerCut solid $color;
-  //}
-  //&:after {
-  //  content: "";
-  //  width: calc(100% - $cornerCut);
-  //  position: absolute;
-  //  top: -$cornerCut;
-  //  left: 0;
-  //  border-right: $cornerCut solid transparent;
-  //  border-bottom: $cornerCut solid $color;}
+  @include rwd {
+    margin: 0;
+
+    width: 100%;
+  }
+
 }
 .box-content {
  @include boxDecor(490px, 250px);
-
-
+  @include rwd {
+    width: calc(100% - 20px);
+    flex-wrap: nowrap;
+  }
 }
 
-
-
-.box-bottom {
-
+.box-section {
+  margin-bottom: 2rem;
+}
+.box-section-row {
+  display: flex;
+  justify-content: space-around;
 }
 
 .box_input {
-  font-size: 1.8rem;
+  margin-top: .5rem;
+  font-size: 1.9rem;
   width: 99%;
-  height: 3rem;
+  height: 4rem;
   background-color: white;
   border: 1px solid black;
   padding: 2px;
+}
+
+.box_input-description {
+  @extend .box_input;
+  height: 20rem;
+
 }
 
 .smallBox_image {
@@ -85,9 +85,22 @@
 }
 
 .clickPage {
+  box-sizing: border-box;
   background-color: rgba( 0,0,0,0);
   border: 0;
   margin: 0;
   padding: 0;
+  @include rwd {
+  width: calc(100% - 20px);
+
+  }
   }
 
+.under_construction {
+  border: 2px solid;
+  border-image-slice: 50;
+  border-image-width: 3px;
+  border-image-outset: 0px;
+  border-image-repeat: repeat;
+  border-image-source: linear-gradient(to right, yellow, black);
+}

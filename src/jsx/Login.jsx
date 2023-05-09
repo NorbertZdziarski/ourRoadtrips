@@ -96,24 +96,26 @@ function Login({API}) {
             {loggedInLogin ? '' :
             <div className="login_main_div">
                 <div className="login_box">
-                    <p> Login </p>
-                    <input
-                        type="text"
-                        className="box_input"
-                        value={newUser}
-                        onChange={inputNewUser}
-                        placeholder='enter your account name'
-                    />
-                    <input
-                        type="password"
-                        className="box_input"
-                        value={newPassword}
-                        onChange={inputNewPassword}
-                        placeholder='enter the password'
-                    />
+                    <p className="login__header"> Login </p>
+                    <section >
+                        <input
+                            type="text"
+                            className="box_input"
+                            value={newUser}
+                            onChange={inputNewUser}
+                            placeholder='enter your account name'
+                        />
+                        <input
+                            type="password"
+                            className="box_input"
+                            value={newPassword}
+                            onChange={inputNewPassword}
+                            placeholder='enter the password'
+                        />
+                    </section>
                     <div className="login_box-buttons">
-                        <button className="btn" onClick={()=> checkLogin()}>Login</button>
-                        <button className="btn" onClick={()=> newAcc()}>Create an account </button>
+                        <button className="btn_typical" onClick={()=> checkLogin()}>Login</button>
+                        <button className="btn_typical" onClick={()=> newAcc()}>Create an account </button>
                     </div>
                 </div>
             </div>}
