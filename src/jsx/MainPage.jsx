@@ -12,11 +12,21 @@ import CarNew from "./CarNew.jsx";
 //     </div>
 // }
 
-function MainPage({userNameLog, userSurnameLog, userCars, userTrips, usersId, API, allTrips, setLoggedInMain, setLoggedUser, setLoggedInLogin}) {
+function MainPage({userNameLog, userSurnameLog, userPasswordLog, userCars, userTrips, usersId, API, allTrips, setLoggedInMain, setLoggedUser, setLoggedInLogin}) {
+
+    const countriesInEurope = ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"];
+    const tripTypes = ["recreation", "sightseeing", "extreme"];
+    const vehicleTypes=["car", "bike", "4x4", "camper", "other"];
+    const carsTypes=["daily","classic","forFun"];
+
 
     const [loggedIn, setLoggedIn] = useState(true);
     const [choosePage, setChoosePage] = useState(1)
     const [chooseTtip, setChooseTrip] = useState(1)
+    const [selectCountry, setSelectCountry] = useState(countriesInEurope[32])
+    const [choiceTripType, setChoiceTripType] = useState('')
+    const [choiceVehicleType, setChoiceVehicleType] = useState('')
+    const [choiceCarType, setChoiceCarType] = useState('')
 
 
 
@@ -39,7 +49,7 @@ function MainPage({userNameLog, userSurnameLog, userCars, userTrips, usersId, AP
         return (
             <div className="mainPageDiv">
                 <div className="mainPageStyle" >
-                    {allTrips.map((trip, i) => <button key={`b${i}`} className="clickPage" onClick={()=> showTripLook({trip}) }><SmallShowTrip key={i} trip = {trip} i ={i}/></button>)}
+                    {allTrips.map((trip, i) => <button key={`b${i}`} className="clickPage" onClick={()=> showTripLook({trip}) }><SmallShowTrip key={i} trip = {trip} i ={i} /></button>)}
                 </div>
             </div>
         )
@@ -60,13 +70,58 @@ function MainPage({userNameLog, userSurnameLog, userCars, userTrips, usersId, AP
     function ChooseFunction({value}) {
         switch (value) {
             case 1:
-                return <PrintMainPage/>;
+                // return <PrintMainPage/>;
             case 2:
-                return ;
+                return (<>
+                    <section className="box-section box-section-row fnt_userpanel">
+                        <div>
+                            country
+                            <select value={selectCountry} onChange={() => setSelectCountry(event.target.value)} className="fnt box_input_trip">
+                                {countriesInEurope.map((country) => (
+                                    <option key={country} value={country} className="fnt ">
+                                        {country}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            trip type
+                            <select value={choiceTripType} onChange={() => setChoiceTripType(event.target.value)} className="fnt box_input_trip">
+                                {tripTypes.map((tripType) => (
+                                    <option key={tripType} value={tripType} className="fnt">
+                                        {tripType}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            vehicle type
+                            <select value={choiceVehicleType} onChange={() => setChoiceVehicleType(event.target.value)} className="fnt" >
+                                {vehicleTypes.map((vehicleType) => (
+                                    <option key={vehicleType} value={vehicleType} className="fnt">
+                                        {vehicleType}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            car type
+                            <select value={newCarType} onChange={() => setNewCarType(event.target.value)} className="fnt box_input_small">
+                                {carsTypes.map((carType) => (
+                                    <option key={carType} value={carType} className="fnt">
+                                        {carType}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </section>
+                    <PrintMainPage/>;
+                </>)
             case 3:
                 return <UserPanel
                     userName = {userNameLog}
                     userSurname = {userSurnameLog}
+                    userPassword = {userPasswordLog}
                     userCars = {userCars}
                     userTrips = {userTrips}
                     usersId = {usersId}
@@ -111,10 +166,10 @@ function MainPage({userNameLog, userSurnameLog, userCars, userTrips, usersId, AP
             <section className="mainMenu__section  ">
                 <header className="main_header box-top">
                     <div className="mainmenu__ico">
-                        <button onClick={()=>setChoosePage(1)} className="mainMenu__home"></button>
-                        <button onClick={()=>setChoosePage(2)} className="mainMenu__filter"></button>
-                        <button onClick={()=>setChoosePage(3)} className="mainMenu__user1"></button>
-                        <button onClick={()=>setChoosePage(4)} className="mainMenu__button"></button>
+                        <button onClick={()=>setChoosePage(1)} className="mainMenu__home" title="main page"></button>
+                        <button onClick={()=>setChoosePage(2)} className="mainMenu__filter" title="filter"></button>
+                        <button onClick={()=>setChoosePage(3)} className="mainMenu__user1" title="user panel"></button>
+                        <button onClick={()=>setChoosePage(4)} className="mainMenu__button" title="log out"></button>
                     </div>
                     <p className="fnt_header__username">{userNameLog}</p>
                 </header>

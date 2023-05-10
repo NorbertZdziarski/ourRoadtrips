@@ -13,6 +13,7 @@ function Login({API}) {
     const [loggedIn, setLoggedIn] = useState(false);
     const [loggedInNA, setLoggedInNA] = useState(false);
     const [loggedInLogin, setLoggedInLogin] = useState(false);
+    const [newAnnouncement, setNewAnnouncement] = useState("")
 
     useEffect(()=>{
         getAllUsers();
@@ -44,13 +45,13 @@ function Login({API}) {
     function checkLogin()  {    // ------------------------------------------------------------------------------------ logowanie
 
         databas.map((user) => {
-            if ((user.name === newUser) && (user.password === newPassword)) {
+            if ((user.nick === newUser) && (user.password === newPassword)) {
                 setLoggedUser(user)
                 setLoggedIn(true)
                 setLoggedInLogin(true);
                 console.log('ok')}
              else {
-
+                setNewAnnouncement('wrong password or username')
                 // setLoggedIn(false)
                 setNewUser("")
                 setNewPassword("")
@@ -79,6 +80,7 @@ function Login({API}) {
             {loggedIn ? (<MainPage
                 userNameLog = {loggedUser.name}
                 userSurnameLog = {loggedUser.surname}
+                userPasswordLog = {loggedUser.password}
                 userCars = {loggedUser.cars}
                 userTrips = {loggedUser.trips}
                 usersId={loggedUser.id}
@@ -87,6 +89,7 @@ function Login({API}) {
                 setLoggedInMain = {setLoggedIn}
                 setLoggedUser = {setLoggedUser}
                 setLoggedInLogin = {setLoggedInLogin}
+
             />) : '' }
             {loggedInNA ? <NewAccount
                 API={API}
@@ -112,8 +115,10 @@ function Login({API}) {
                             onChange={inputNewPassword}
                             placeholder='enter the password'
                         />
+                        <p className="errorAnnouncement">{newAnnouncement}</p>
                     </section>
                     <div className="login_box-buttons">
+
                         <button className="btn_typical" onClick={()=> checkLogin()}>Login</button>
                         <button className="btn_typical" onClick={()=> newAcc()}>Create an account </button>
                     </div>

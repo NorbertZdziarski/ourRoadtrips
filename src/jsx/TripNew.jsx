@@ -83,9 +83,9 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) 
                     />
                 </section>
                 <section className="box-section box-section-row">
-                    <div>
+                    <div className="box_input_trip">
                         <p> trip type</p>
-                        <select value={newTripType} onChange={() => setNewTripType(event.target.value)} className="fnt">
+                        <select value={newTripType} onChange={() => setNewTripType(event.target.value)} className="fnt box_input_trip">
                             {tripTypes.map((tripType) => (
                                 <option key={tripType} value={tripType} className="fnt">
                                     {tripType}
@@ -93,10 +93,10 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) 
                             ))}
                         </select>
                     </div>
-                    <div>
+                    <div className="box_input_trip">
                         <p> where </p>
 
-                        <select value={newTripCountry} onChange={() => setNewTripCountry(event.target.value)} className="fnt">
+                        <select value={newTripCountry} onChange={() => setNewTripCountry(event.target.value)} className="fnt box_input_trip">
                             {countriesInEurope.map((country) => (
                                 <option key={country} value={country} className="fnt">
                                     {country}
@@ -105,9 +105,9 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) 
                         </select>
 
                     </div>
-                    <div>
+                    <div className="box_input_trip">
                         <p>choose a vehicle</p>
-                        <select value={newTripCar} onChange={() => setNewTripCar(event.target.value)} className="fnt">
+                        <select value={newTripCar} onChange={() => setNewTripCar(event.target.value)} className="fnt box_input_trip">
                             {userCars.map((userCar) => (
                                 <option key={userCar.carKey} value={userCar.carBrand} className="fnt">
                                     {userCar.carBrand}

@@ -97,7 +97,7 @@ function CarNew({userId, API, userCars, setSectionSel}) {
             </section>
             <section className="box-section box-section-row">
                 <p> for you</p>
-                <select value={newCarType} onChange={() => setNewCarType(event.target.value)} className="fnt">
+                <select value={newCarType} onChange={() => setNewCarType(event.target.value)} className="fnt box_input_small">
                     {carsTypes.map((carType) => (
                         <option key={carType} value={carType} className="fnt">
                             {carType}
@@ -106,7 +106,7 @@ function CarNew({userId, API, userCars, setSectionSel}) {
                 </select>
                 <p> engine fuel</p>
 
-                <select value={newCarEngineFuel} onChange={() => setNewCarEngineFuel(event.target.value)} className="fnt">
+                <select value={newCarEngineFuel} onChange={() => setNewCarEngineFuel(event.target.value)} className="fnt box_input_small">
                     {fuelTypes.map((fuelType) => (
                         <option key={fuelType} value={fuelType} className="fnt">
                             {fuelType}
@@ -118,11 +118,14 @@ function CarNew({userId, API, userCars, setSectionSel}) {
                 <p> engine power</p>
                 <input
                     type="number"
-                    className="box_input"
+                    className="box_input box_input_small"
                     value={newCarEnginePower}
+                    min={1}
+                    max={999}
+                    maxLength={3}
                     onChange={() => setNewEnginePower(event.target.value)}
                     // onKeyUp={}
-                    placeholder= ">>>"
+                    placeholder= "hp"
                 />
 
 

@@ -5,7 +5,7 @@ import CarNew from "./CarNew.jsx";
 import ShowUserTripsCars from "./ShowUserTripsCars.jsx";
 
 
-function UserPanel({userName, userSurname, userCars, userTrips, usersId, API, setLoggedIn, setUserName, setUserSurname}) {
+function UserPanel({userName, userSurname, userPassword, userCars, userTrips, usersId, API, setLoggedIn, setUserName, setUserSurname}) {
 
     const [sectionSel, setSectionSel] = useState(1)
 
@@ -39,6 +39,7 @@ function UserPanel({userName, userSurname, userCars, userTrips, usersId, API, se
                 return <EditUser
                     userName={userName}
                     userSurname={userSurname}
+                    userPassword={userPassword}
                     userId={usersId}
                     API={API}
                     setUserName={setUserName}

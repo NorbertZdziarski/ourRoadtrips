@@ -6,6 +6,8 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin}) {
     const [newSurname, setNewSurname] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newPasswordChk, setNewPasswordChk] = useState('');
+    const [termsAndConditions, setTermsAndConditions] = useState(false)
+    const [newAnnouncement, setNewAnnouncement] = useState("")
 
     // function checkCorrect() {
     //
@@ -13,6 +15,10 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin}) {
     console.log(' NEW ACCOUNT')
     setLoggedInLogin(true);
     function handleAddUser() {
+        if (!termsAndConditions) {
+            setNewAnnouncement('please accept the terms and conditions.')
+            return;
+        }
         if (newPassword === newPasswordChk) {
             const dane = {
                 name: newName,
@@ -41,7 +47,8 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin}) {
                 });
             setLoggedInLogin(false);
             setLoggedInNA(false);
-        }
+        } else {
+            setNewAnnouncement('! wrong password or username !') }
     }
 
     function cancel() {
@@ -62,6 +69,12 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin}) {
         setNewPassword(event.target.value)}
     const inputNewPasswordChk = (event) => {
         setNewPasswordChk(event.target.value)}
+
+    const checboxChange = (event) => {
+        setTermsAndConditions(event.target.checked)
+    }
+
+
     return (
         <div className="box new_account">
             <div className="newAccount_main fnt_userpanel">
@@ -132,12 +145,12 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin}) {
                     <p>accept the terms and conditions</p>
                     <input
                         type="checkbox"
-                        // className="box_input"
-                        // value={newPassword}
-                        // onChange={inputNewPassword}
-                        // onKeyUp={}
-                        placeholder='>>>'
+                        checked={termsAndConditions}
+                        onChange={checboxChange}
                     />
+                </div>
+                <div className="div-accept">
+                    <p className="errorAnnouncement">{newAnnouncement}</p>
                 </div>
                 <div className="div-accept">
                 <button onClick={handleAddUser} className="btn_save">SAVE</button>

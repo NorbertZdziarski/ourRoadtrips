@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 
 function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
+    console.log('car edit: ')
+    console.log(selectedCar)
+
+    console.log(userCars[selectedCar.carId])
+
 
 
     const vehicleTypes=["car", "bike", "4x4", "camper", "other"];
@@ -50,8 +55,10 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
             })
             .then(response => response.json())
             .then(data => {
-                // setUserName(newName)
-                // setUserSurname(newSurname)
+                userCars.forEach((index, obj) => {
+                    if (obj.carId === selectedCar.carId) {userCars[index] = {...selectedCar}}
+                })
+
                 console.log('then data vvv')
                 console.log(data);
             })
@@ -93,7 +100,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
              </section>
             <section className="box-section box-section-row">
                 <p> for you</p>
-                <select value={newCarType} onChange={() => setNewCarType(event.target.value)} className="fnt">
+                <select value={newCarType} onChange={() => setNewCarType(event.target.value)} className="fnt box_input_small">
                     {carsTypes.map((carType) => (
                         <option key={carType} value={carType} className="fnt">
                             {carType}
@@ -101,9 +108,9 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
                     ))}
                 </select>
                 <p> engine fuel:</p>
-                <select value={newCarEngineFuel} onChange={() => setNewCarEngineFuel(event.target.value)} className="fnt">
+                <select value={newCarEngineFuel} onChange={() => setNewCarEngineFuel(event.target.value)} className="fnt box_input_small">
                     {fuelTypes.map((fuelType) => (
-                        <option key={fuelType} value={fuelType} className="fnt">
+                        <option key={fuelType} value={fuelType} className="fnt ">
                             {fuelType}
                         </option>
                     ))}
@@ -111,7 +118,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
                 <p> engine power</p>
                 <input
                     type="number"
-                    className="box_input"
+                    className="box_input box_input_small"
                     value={newCarEnginePower}
                     onChange={() => setNewCarEnginePower(event.target.value)}
                     // onKeyUp={}
@@ -130,6 +137,9 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
             </section>
             <section className="div-accept">
                 <button onClick={() => saveData(userId, selectedCar.carId)} className="btn_save">Save</button>
+                <button  className="btn_delete">Delete</button>
+                {/*onClick={() => saveData(userId, selectedTrip.tripId, true)}*/}
+
                 <button onClick={() => setSectionSel(1)} className="btn_cancel">Cancel</button>
             </section>
         </div>

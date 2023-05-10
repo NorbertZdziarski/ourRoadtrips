@@ -28,12 +28,10 @@
   }
 
 }
-.box-content {
- @include boxDecor(490px, 250px);
-  @include rwd {
-    width: calc(100% - 20px);
-    flex-wrap: nowrap;
-  }
+.sst_description {
+  margin-top: .8rem;
+  margin-bottom: 2rem;
+  height: 10rem;
 }
 
 .box-section {
@@ -60,10 +58,36 @@
 
 }
 
-.smallBox_image {
-  max-width: 100%;
+.box-content {
+  background-color: white;
+  width: 600px;
   height: 250px;
+  display: flex;
+  @include rwd {
+    width: calc(100% - 20px);
+    flex-wrap: nowrap;
+  }
+}
+
+
+
+.box-content-column {
   position: relative;
+  width: 50%;
+  padding: .5rem;
+}
+.box_input_trip {
+  width: 90%;
+}
+.box_input_small {
+  width: 25%;
+}
+
+.smallBox_image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  //position: relative;
   &:hover {
     opacity: 0.6;
     }

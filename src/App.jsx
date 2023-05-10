@@ -6,12 +6,13 @@ import NewAccount from "./jsx/NewAccount.jsx";
 
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [slideShow, setSlideShow] = useState(false);
 
 
     const API = "http://localhost:3022";
     const [photoGallery, setPhotoFallery] = useState([
         "../warehouse/images/slideshow/bgr_bmw.jpg",
+        "../warehouse/images/slideshow/Mazda3_turbo_4x4.jpg",
         "../warehouse/images/slideshow/Pawel_bieszczady_moto.jpg",
         "../warehouse/images/slideshow/20221030_121459.jpg"]);
     const [backgroundImage, setBackgroundImage] = useState(0)
@@ -20,7 +21,9 @@ function App() {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setBackgroundImage(prevIndex => (prevIndex + 1) % photoGallery.length);
-        }, 10000000);
+            console.log('value slideShow APP')
+            console.log(slideShow)
+        }, 3000000);
         return () => {
             clearInterval(intervalId);
         };
@@ -40,15 +43,9 @@ function App() {
                 {/*<button className="btn_main btn_main_lft" onClick={() =>setBackgroundImage(photoGallery[0])}></button>*/}
             </div>
             <div className="column_center">
-                {/*<div className="box-dekor">*/}
-                {/*    <header className="main_header">*/}
-                {/*        <nav className="header__nav fnt">MAIN MENU</nav>*/}
-                {/*        <div className="header__logo fnt">ourRoadrips</div>*/}
-                {/*    </header>*/}
-                {/*</div>*/}
-
                 <main className="main_box fnt_extra" id="main" >
-                    {loggedIn ? <NewAccount API={API} setLoggedIn={setLoggedIn}/> : <Login API={API}/> }
+                    <Login
+                        API={API}/>
                 </main>
             </div>
 

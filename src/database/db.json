@@ -1,17 +1,17 @@
 {
   "profile": [
     {
-      "name": "Ala",
-      "nick": "a1",
+      "name": "2",
+      "nick": "a",
       "surname": "Piękny",
-      "password": "Haslo",
+      "password": "a",
       "cars": [
         {
           "carId": 0,
           "carKey": "1C0",
           "carBrand": "FSO",
           "carName": "Polonez",
-          "vehicle": "bike",
+          "vehicle": "4x4",
           "carType": "daily",
           "carEngineFuel": "petrol",
           "carEnginePower": 80,
@@ -20,25 +20,32 @@
         },
         {
           "carId": 1,
-          "carKey": "1C1",
-          "carName": "",
-          "carBrand": "Honda",
+          "carKey": "",
+          "carBrand": "Suzuki",
+          "carName": "Civic",
           "vehicle": "bike",
           "carType": "forFun",
-          "tripType": "petrol",
-          "tripCountry": "180",
-          "carDescription": "przecinak",
-          "tripPhoto": ""
+          "carDescription": "przecinak"
         },
         {
           "carId": 2,
-          "carKey": "1C2",
-          "carName": "hghg",
-          "carBrand": "ghghg",
-          "vehicle": "4x4",
+          "carKey": "",
+          "carBrand": "Ford",
+          "carName": "Focus",
+          "vehicle": "car",
           "carType": "",
-          "tripType": "petrol",
-          "tripCountry": "666666666666666666666666666666666666",
+          "carEnginePower": "280",
+          "carDescription": ""
+        },
+        {
+          "carId": 3,
+          "carKey": "1C3",
+          "carName": "3",
+          "carBrand": "Tesla",
+          "vehicle": "",
+          "carType": "",
+          "tripType": "electric",
+          "tripCountry": "350",
           "carDescription": "",
           "tripPhoto": ""
         }
@@ -58,11 +65,23 @@
         },
         {
           "tripId": 1,
-          "tripName": "Wycieczka po mieście",
-          "tripDescription": "",
-          "tripType": "miejska",
-          "tripCountry": "",
-          "tripCar": "",
+          "tripKey": "1T1",
+          "tripName": "Hello",
+          "tripDescription": "ddddddsdsd ds ds d sds d sd sds ds ds",
+          "tripType": "sightseeing",
+          "tripCountry": "Ireland",
+          "tripCar": {
+            "carId": 3,
+            "carKey": "1C3",
+            "carName": "3",
+            "carBrand": "Tesla",
+            "vehicle": "",
+            "carType": "",
+            "tripType": "electric",
+            "tripCountry": "350",
+            "carDescription": "",
+            "tripPhoto": ""
+          },
           "tripPublic": true
         },
         {
@@ -70,9 +89,17 @@
           "tripKey": "1T2",
           "tripName": "do okoła Słowacji",
           "tripDescription": "MX5 krajoznawczo",
-          "tripType": "górska",
+          "tripType": "sightseeing",
           "tripCountry": "Slovakia",
-          "tripCar": "",
+          "tripCar": {
+            "carId": 1,
+            "carKey": "1C1",
+            "carBrand": "Honda",
+            "carName": "Civic",
+            "vehicle": "bike",
+            "carType": "forFun",
+            "carDescription": "przecinak"
+          },
           "tripLikes": [],
           "tripPublic": true
         },
@@ -99,9 +126,114 @@
           "tripPhoto": "",
           "tripLikes": "",
           "tripPublic": false
+        },
+        {
+          "tripId": 5,
+          "tripKey": "1T5",
+          "tripName": "Wesoła wyprawa",
+          "tripDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porttitor elit quis libero rhoncus, eu pretium risus rhoncus. Nam bibendum elit vel eros malesuada interdum. Ut consequat eu erat quis vestibulum. Proin feugiat felis nec sem vulputate accumsan. Fusce vitae nibh eget elit scelerisque dapibus vel vel leo. Nulla nec dolor congue, volutpat neque a, aliquet purus. Suspendisse sed dignissim lacus. Duis dignissim ex non nunc viverra aliquet. Vestibulum efficitur erat leo, ac dignissim orci mattis ut. Aenean velit lacus, tristique tempus est ut, volutpat mattis diam. Praesent sapien felis, vulputate maximus orci et, suscipit sollicitudin quam.\n\nVestibulum volutpat massa in ante porta, sagittis vulputate magna volutpat. In ac egestas orci. Phasellus elit neque, elementum in efficitur et, placerat at velit. Fusce elit ante, mattis a viverra vitae, molestie at tortor. Mauris vestibulum sollicitudin efficitur. Etiam nec lacinia purus, vel molestie purus. Fusce vitae risus sit amet orci egestas dictum. Fusce tincidunt volutpat metus consectetur cursus. Morbi vitae elit tincidunt, interdum eros vitae, luctus mi. In mollis nec risus in tincidunt. Vivamus a ante id nisi tempor blandit eget eget justo. Suspendisse sed iaculis massa. Nam vel metus in sapien mollis varius. Pellentesque blandit neque et varius semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus nec tellus risus.\n\nMorbi pharetra, dolor vel pulvinar finibus, lectus lectus molestie nunc, sed tristique urna mauris ultricies turpis. Proin eget ex consectetur, semper dolor in, ornare mi. Ut ullamcorper mi justo. Aenean vitae semper turpis. Ut accumsan viverra augue a consequat. Curabitur lobortis ipsum nec pharetra eleifend. Nam imperdiet ipsum sit amet aliquam consequat. Nam elit ante, molestie non odio a, ultricies maximus urna. Aliquam vitae consequat dui, at sagittis massa. Fusce velit orci, venenatis ut purus id, mattis suscipit metus. Integer lacinia laoreet lorem ut viverra. Vestibulum a tristique tortor.\nEtiam suscipit commodo massa, sed consectetur justo bibendum ut. Aenean condimentum neque sit amet fringilla ornare. Morbi id velit risus. Suspendisse ultrices, nulla quis varius condimentum, sapien lectus iaculis massa, vel efficitur ipsum justo et tellus. Morbi pulvinar consequat pretium. Sed nec diam ac purus ullamcorper malesuada. Cras ac malesuada nulla. Nulla vestibulum porta tortor eget auctor. Quisque ut lectus in tortor malesuada lobortis. Praesent placerat elit congue diam lacinia accumsan.\n\nDonec nec metus arcu. Nam ac tortor ut velit hendrerit consequat. Morbi et erat eu diam consequat venenatis. Pellentesque posuere justo a leo cursus, quis imperdiet odio eleifend. In ultricies nisi tellus, sed vehicula diam mattis at. Donec in pellentesque ligula. Vestibulum tempor sem orci, et eleifend est efficitur ut. Sed ullamcorper nisi libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum elementum et justo vitae tristique. Proin interdum condimentum efficitur.",
+          "tripType": "recreation",
+          "tripCountry": "Greece",
+          "tripCar": {
+            "carId": 0,
+            "carKey": "1C0",
+            "carBrand": "FSO",
+            "carName": "Polonez",
+            "vehicle": "4x4",
+            "carType": "daily",
+            "carEngineFuel": "petrol",
+            "carEnginePower": 80,
+            "carDescription": "wspaniały potwór",
+            "carPhoto": ""
+          },
+          "tripLikes": [],
+          "tripPublic": true
+        },
+        {
+          "tripId": 6,
+          "tripKey": "1T6",
+          "tripName": "",
+          "tripDescription": "",
+          "tripType": "",
+          "tripCountry": "",
+          "tripCar": "",
+          "tripPhoto": "",
+          "tripLikes": "",
+          "tripPublic": false
+        },
+        {
+          "tripId": 7,
+          "tripKey": "1T7",
+          "tripName": "Chorwacja",
+          "tripDescription": "wyprawa w nadmorskie serpentyny",
+          "tripType": "",
+          "tripCountry": "Croatia",
+          "tripCar": {
+            "carId": 3,
+            "carKey": "1C3",
+            "carName": "3",
+            "carBrand": "Tesla",
+            "vehicle": "car",
+            "carType": "",
+            "tripType": "electric",
+            "tripCountry": "350",
+            "carDescription": "",
+            "tripPhoto": ""
+          },
+          "tripLikes": [],
+          "tripPublic": true
         }
       ],
       "id": 1
+    },
+    {
+      "name": "",
+      "nick": "TTOOMME",
+      "surname": "",
+      "password": "gugus!!!",
+      "cars": [
+        {
+          "carId": 0,
+          "carKey": "",
+          "carBrand": "Tesla",
+          "carName": "3SR+",
+          "vehicle": "",
+          "carType": "forFun",
+          "carDescription": ""
+        }
+      ],
+      "trips": [
+        {
+          "tripId": 0,
+          "tripKey": "2T0",
+          "tripName": "Espana ",
+          "tripDescription": "Cudowna wyprawa dookoła Hiszpani! Murcia to piękne miasto!",
+          "tripType": "",
+          "tripCountry": "Spain",
+          "tripCar": "",
+          "tripLikes": [],
+          "tripPublic": true
+        }
+      ],
+      "id": 2
+    },
+    {
+      "name": "b",
+      "nick": "b",
+      "surname": "b",
+      "password": "b",
+      "cars": [],
+      "trips": [],
+      "id": 3
+    },
+    {
+      "name": "g",
+      "nick": "g",
+      "surname": "g",
+      "password": "g",
+      "cars": [],
+      "trips": [],
+      "id": 4
     }
   ]
 }
