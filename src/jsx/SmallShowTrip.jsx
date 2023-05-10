@@ -1,6 +1,7 @@
 import React from 'react';
 
-function SmallShowTrip({trip, i}) {
+function SmallShowTrip({trip, i, selectCountry, choiceTripType, choiceCarType, choiceVehicleType}) {
+
 
     function TripType({tripType}) {
         switch (tripType) {
@@ -34,6 +35,11 @@ function SmallShowTrip({trip, i}) {
         return <img src="../../warehouse/images/ico/star-regular.svg" className="ico_smallShowTrip smallTrip_like" alt="extreme"/>;
     }
     if (!trip.tripPublic) return;
+
+    if (selectCountry !== "all" && selectCountry !== trip.tripCountry ) return;
+    if (choiceTripType !== "all" && choiceTripType !== trip.tripType) return;
+    if (choiceCarType !== "all" && choiceCarType !== trip.tripCar.carType) return;
+    if (choiceVehicleType !== "all" && choiceVehicleType !== trip.tripCar.vehicle) return;
     return (
         <div key={trip.tripKey} className="box-content ">
 
