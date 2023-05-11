@@ -5,7 +5,7 @@ import CarNew from "./CarNew.jsx";
 import ShowUserTripsCars from "./ShowUserTripsCars.jsx";
 
 
-function UserPanel({userName, userSurname, userPassword, userCars, userTrips, usersId, API, setLoggedIn, setUserName, setUserSurname}) {
+function UserPanel({userName, userNick, userSurname, userPassword, userCars, userTrips, usersId, API, setUserName, setUserSurname, allTrips}) {
 
     const [sectionSel, setSectionSel] = useState(1)
 
@@ -19,14 +19,19 @@ function UserPanel({userName, userSurname, userPassword, userCars, userTrips, us
                     userId={usersId}
                     API={API}
                     setSectionSel={setSectionSel}
+                    userNick = {userNick}
+                    allTrips = {allTrips}
                 />;
             case 2:
                 return <TripNew
+                    userNick = {userNick}
                     userId={usersId}
                     API={API}
                     userCars={userCars}
                     userTrips={userTrips}
                     setSectionSel={setSectionSel}
+                    userName = {userName}
+                    allTrips = {allTrips}
                 />;
             case 3:
                 return <CarNew
@@ -37,6 +42,7 @@ function UserPanel({userName, userSurname, userPassword, userCars, userTrips, us
                 />;
             case 4:
                 return <EditUser
+                    userNick = {userNick}
                     userName={userName}
                     userSurname={userSurname}
                     userPassword={userPassword}

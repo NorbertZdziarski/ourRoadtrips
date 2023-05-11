@@ -5,6 +5,7 @@
 @import "buttons";
 
 @import "img";
+@import "maps";
 @import "box-style";
 @import "smallTrip";
 
@@ -242,6 +243,7 @@ html {
 }
 
 .main__div {
+  position: relative;
   @include flexCenter;
   color:white;
   justify-content: space-between;
@@ -331,23 +333,36 @@ html {
   margin-bottom: 1rem;
 }
 .triplook_header {
-  padding: 1rem;
+  padding: 2rem;
 }
 .triplook_main {
   display: flex;
+  @include rwd {
+    display: block;
+  }
 }
 
 .triplook_column-left {
   width: calc(60% - 3rem);
   padding: 1rem;
-  //background-color: #d06c00;
+
   border-right: 2px solid white;
+  @include rwd {
+    width: 100%;
+    border: 0;
+    padding: 0;
+  }
 }
 
 .triplook_column-right {
   width: 40%;
   padding: 1rem;
-  //background-color: darkred;
+  @include rwd {
+    width: 100%;
+    border: 0;
+    padding: 0;
+  }
+
 }
 
 @mixin triplook {
@@ -358,8 +373,13 @@ html {
 }
 
 .triplook_img {
-  height: $leyoutFotoMapHight;
   @include triplook;
+  height: $leyoutFotoMapHight;
+  width: 100%;
+  object-fit: cover;
+
+  padding: 0;
+
 }
 
 .triplook_map {
@@ -376,6 +396,9 @@ html {
 .triplook_details {
   @include triplook;
   height: $layoutDetails;
+  display: flex;
+  justify-content: space-around;
+
 
 
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import UserPanel from "./UserPanel.jsx";
 import SmallShowTrip from "./SmallShowTrip.jsx";
 
@@ -12,7 +12,9 @@ import CarNew from "./CarNew.jsx";
 //     </div>
 // }
 
-function MainPage({userNameLog, userSurnameLog, userPasswordLog, userCars, userTrips, usersId, API, allTrips, setLoggedInMain, setLoggedUser, setLoggedInLogin}) {
+function MainPage({userNickLog, userNameLog, userSurnameLog, userPasswordLog, userCars, userTrips, usersId, API, allTrips, setLoggedInMain, setLoggedUser, setLoggedInLogin}) {
+
+    const APIimg = "http://localhost:3000/";
 
     const countriesInEurope = ["all", "Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"];
     const tripTypes = ["all", "recreation", "sightseeing", "extreme"];
@@ -27,6 +29,22 @@ function MainPage({userNameLog, userSurnameLog, userPasswordLog, userCars, userT
     const [choiceTripType, setChoiceTripType] = useState("all")
     const [choiceVehicleType, setChoiceVehicleType] = useState("all")
     const [choiceCarType, setChoiceCarType] = useState("all")
+    const [usersPhotos, setUsersPhotos] = useState([]);
+
+
+    useEffect(()=>{
+        getAllPhotos();
+    },[])
+    const getAllPhotos = () => {
+        fetch(`${APIimg}images`)
+            .then(response => response.json())
+            .then(data => {
+                setUsersPhotos(data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 
 
 
@@ -35,14 +53,6 @@ function MainPage({userNameLog, userSurnameLog, userPasswordLog, userCars, userT
         setChooseTrip(trip)
         setChoosePage(5)
 
-
-        // setLoggedIn(true)
-        // return <TripLook
-        //                     trip={trip} />
-
-        // onClick={()=>setChoosePage(4)
-        //
-        // ()=>showTripLook(trip)
     }
 
     const PrintMainPage = ({selectCountry, choiceCarType, choiceTripType, choiceVehicleType }) => {
@@ -58,6 +68,8 @@ function MainPage({userNameLog, userSurnameLog, userPasswordLog, userCars, userT
                             choiceTripType = {choiceTripType}
                             choiceVehicleType = {choiceVehicleType}
                             choiceCarType = {choiceCarType}
+                            APIimg = {APIimg}
+                            usersPhotos = {usersPhotos}
                         />
                     </button>)}
                 </div>
@@ -140,15 +152,17 @@ function MainPage({userNameLog, userSurnameLog, userPasswordLog, userCars, userT
                 </>)
             case 3:
                 return <UserPanel
+
                     userName = {userNameLog}
                     userSurname = {userSurnameLog}
                     userPassword = {userPasswordLog}
+                    userNick = {userNickLog}
                     userCars = {userCars}
                     userTrips = {userTrips}
                     usersId = {usersId}
                     API = {API}
+                    APIimg = {APIimg}
                     setLoggedIn = {setLoggedIn}
-
                     allTrips = {allTrips} />;
 
             case 4:

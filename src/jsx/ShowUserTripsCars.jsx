@@ -4,7 +4,7 @@ import CarEdit from "./CarEdit.jsx";
 import TripEdit from "./TripEdit.jsx";
 
 
-function ShowUserTripsCars({userCars, userTrips, userId, API}) {
+function ShowUserTripsCars({userCars, userTrips, userId, API, userNick, allTrips}) {
     const [sectionSel, setSectionSel] = useState(1);
     const [selectedTrip, setSelectedTrip] = useState('');
     const [selectedCar, setSelectedCar] = useState('');
@@ -68,6 +68,8 @@ function ShowUserTripsCars({userCars, userTrips, userId, API}) {
                     userId={userId}
                     API={API}
                     setSectionSel={setSectionSel}
+                    userNick ={userNick}
+                    allTrips = {allTrips}
                 />;
             case 3:
                 return <CarNew

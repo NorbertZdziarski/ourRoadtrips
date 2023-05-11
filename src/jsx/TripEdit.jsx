@@ -1,11 +1,9 @@
-import React, {useState} from 'react';
-import FileUpload from "./TakeFile.jsx";
-import SaveFile from "./SaveFile.jsx";
+import {useState} from 'react';
 
 
-
-function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel}) {
+function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel, userNick, allTrips}) {
     let saveUserCar = {};
+    let base64Data;
     const countriesInEurope = ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"];
     const tripTypes = ["recreation", "sightseeing", "extreme"];
 
@@ -17,87 +15,117 @@ function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel
     const [newTripPhoto, setNewTripPhoto] = useState("")
     const [newTripPublic, setNewTripPublic] = useState(true)
     const [selectCountry, setSelectCountry] = useState(selectedTrip.tripCountry)
+    const [selectedImage, setSelectedImage] = useState(null);
 
 
-    const saveData = (id, idTrip, del) => {
+    const saveData = async (id, idTrip, del) => {
 
 
-      userCars.map((userCar) => {
-          if (userCar.carKey === newTripCar) saveUserCar = userCar;
-      })
 
-        if (del) {
-            userTrips[idTrip] = {
-                tripId: idTrip,
-                tripKey: selectedTrip.tripKey,
-                tripName: "",
-                tripDescription: "",
-                tripType: "",
-                tripCountry: "",
-                tripCar: "",
-                tripPhoto: "",
-                tripLikes: "",
-                tripPublic: false}
-        } else {
-        userTrips[idTrip] = {
-            tripId: idTrip,
-            tripKey: selectedTrip.tripKey,
-            tripName: (newTripName ? newTripName : selectedTrip.tripName),
-            tripDescription: (newTripDescription ? newTripDescription : selectedTrip.tripDescription),
-            tripType: (newTripType ? newTripType : selectedTrip.tripType),
-            tripCountry: (selectCountry ? selectCountry : selectedTrip.tripCountry),
-            tripCar: (newTripCar ? saveUserCar : selectedTrip.tripCar),
-            tripPhoto: (newTripPhoto ? newTripPhoto : selectedTrip.carPhoto),
-            tripLikes: selectedTrip.tripLikes,
-            tripPublic: (newTripPublic ? newTripPublic : selectedTrip.tripPublic)
-        };}
+        userCars.map((userCar) => {
+            if (userCar.carKey === newTripCar) saveUserCar = userCar;
+        })
 
-        const saveTrip = {
-            "trips" : userTrips
+        if (!selectedImage) {
+            base64Data = selectedTrip.tripPhoto
+            return;
         }
 
-        console.log('ID:   ' + id)
-        fetch(`${API}/profile/${id}`
-            , {
-                method: "PATCH"
-                ,
-                body: JSON.stringify(saveTrip),
-                headers: {
-                    "Content-Type": "application/json"
+        try {
+            const reader = new FileReader();
+            reader.readAsDataURL(selectedImage);
+            reader.onloadend = async () => {
+                base64Data = reader.result.split(',')[1];
+
+
+
+                console.log('userNick')
+                console.log(userNick)
+
+
+
+                if (del) {
+                    userTrips[idTrip] = {
+                        tripId: idTrip,
+                        tripKey: selectedTrip.tripKey,
+                        tripUserNick: "",
+                        tripName: "",
+                        tripDescription: "",
+                        tripType: "",
+                        tripCountry: "",
+                        tripCar: "",
+                        tripLikes: "",
+                        tripPublic: false,
+                        tripPhoto: ""}
+                } else {
+                    userTrips[idTrip] = {
+                        tripId: idTrip,
+                        tripKey: selectedTrip.tripKey,
+                        tripUserNick: userNick,
+                        tripName: (newTripName ? newTripName : selectedTrip.tripName),
+                        tripDescription: (newTripDescription ? newTripDescription : selectedTrip.tripDescription),
+                        tripType: (newTripType ? newTripType : selectedTrip.tripType),
+                        tripCountry: (selectCountry ? selectCountry : selectedTrip.tripCountry),
+                        tripCar: (newTripCar ? saveUserCar : selectedTrip.tripCar),
+                        tripLikes: selectedTrip.tripLikes,
+                        tripPublic: (newTripPublic ? newTripPublic : selectedTrip.tripPublic),
+                        tripPhoto: base64Data,
+                    };}
+                const saveTrip = {
+                    "trips" : userTrips
                 }
-            })
-            .then(response => response.json())
-            .then(data => {
+
+                console.log("userTrip" + userTrips[idTrip])
+                console.log("selected Trip: " + selectedTrip)
+
                 userTrips.forEach((index, obj) => {
                     if (obj.tripId === selectedTrip.tripId) {userTrips[index] = {...selectedTrip}}
                 })
-                console.log(data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-
-        setSectionSel(1);
-    }
+                allTrips.forEach((index, obj) => {
+                    if (obj.tripKey === selectedTrip.tripKey) {allTrips[index] = {...selectedTrip}}
+                })
 
 
-    // function FileUpload({userId}) {
-        const [selectedFile, setSelectedFile] = useState(null);
+                try {
+                    const response = await fetch(`${API}/profile/${id}`
+                            , {
+                                method: "PATCH"
+                                ,
+                                body: JSON.stringify(saveTrip),
+                                headers: {
+                                    "Content-Type": "application/json"
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
 
-        console.log('----M------');
 
-        // const handleFileChange = (event) => {
-        //     setSelectedFile(event.target.files[0]);
-        // };
+                                console.log(data);
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
 
-        const handleUpload = () => {
-            // kod, który wykorzystuje plik
-            console.log(selectedFile);
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log('Zdjęcie zostało zapisane na serwerze. ID:', data.id);
+                        setNewTripPhoto(data.id);
+                    } else {
+                        console.log('Wystąpił błąd podczas zapisywania zdjęcia.');
+                    }
+                } catch (error) {
+                    console.log('Wystąpił błąd podczas wysyłania żądania.');
+                }
+            };
+        } catch (error) {
+            console.log('Wystąpił błąd podczas przetwarzania zdjęcia.');
+        }
+            setSectionSel(1);
+    };
 
-            // <img src={selectedFile.name}/>
-
-        };
-
+    const handleImageChange = (event) => {
+        setSelectedImage(event.target.files[0]);
+    };
 
     return (
         <div className="fnt_userpanel">
@@ -110,14 +138,12 @@ function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel
                     maxLength={70}
                     value={newTripName}
                     onChange={() => setNewTripName(event.target.value)}
-                    // onKeyUp={}
-                    // placeholder= {selectedTrip.tripName}
+
                 />
                 <p> description: </p>
                 <textarea
                     className="box_input-description"
-                    // id=""
-                    // name=""
+
                     value={newTripDescription}
                     onChange={() => setNewTripDescription(event.target.value)}
                     placeholder='>>>'
@@ -157,22 +183,17 @@ function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel
                     </select>
                 </div>
             </section>
-            <section className="box-section under_construction">
+            <section className="box-section">
                 <p>add trip photo</p>
-                <input type="file" onChange={()=>setSelectedFile(event.target.files[0])} />
-                <button onClick={handleUpload} className="btn_cancel">Upload</button>
+
+                <input type="file" onChange={handleImageChange} />
+
             </section>
             <section className="div-accept">
-                <button onClick={() => saveData(userId, selectedTrip.tripId, false)} className="btn_save">Save {newTripCar}</button>
+                <button onClick={() => saveData(userId, selectedTrip.tripId, false)} className="btn_save">Save</button>
                 <button onClick={() => saveData(userId, selectedTrip.tripId, true)} className="btn_delete">Delete</button>
-                {/*<button onClick={() => fileUp}>Add File</button>*/}
+
                 <button onClick={() => setSectionSel(1)} className="btn_cancel">Cancel</button>
-                {/*<FileUpload*/}
-                {/*    userId = {'ffff'}*/}
-                {/*/>;*/}
-                <SaveFile
-                    API = {API}
-                />
             </section>
         </div>
     );

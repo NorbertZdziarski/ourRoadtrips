@@ -23,22 +23,37 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
     const [newCarPhoto, setNewCarPhoto] = useState("")
 
 
-    const saveData = (id, idCar) => {  // ------------------------------------------------------------------------------------ zmiana - w trakcie pracy
+    const saveData = (id, idCar, del) => {  // ------------------------------------------------------------------------------------ zmiana - w trakcie pracy
 
-        userCars[idCar] = {
-            carId: idCar,
-            carKey: "",
-            carBrand: (newCarBrand ? newCarBrand : selectedCar.carBrand),
-            carName: (newCarName ? newCarName : selectedCar.carName),
-            vehicle: (newVehicle ? newVehicle: selectedCar.vehicle),
-            carType: (newCarType ? newCarType : selectedCar.carType),
-            carEngineFuel: (newCarEngineFuel ? newCarEngineFuel : selectedCar.carEngineFuel),
-            carEnginePower: (newCarEnginePower ? newCarEnginePower : selectedCar.carEnginePower),
-            carDescription: (newCarDescription ? newCarDescription : selectedCar.carDescription),
-            carPhoto: (newCarPhoto ? newCarPhoto : selectedCar.carPhoto)
+
+        if (del) {
+            userCars[idCar] = {
+                carId: idCar,
+                carKey: selectedCar.carKey,
+                carBrand: "",
+                carName: "",
+                vehicle: "",
+                carType: "",
+                carEngineFuel: "",
+                carEnginePower: "",
+                carDescription: "",
+                carPhoto: ""
         };
+        } else {
+            userCars[idCar] = {
+                carId: idCar,
+                carKey: selectedCar.carKey,
+                carBrand: (newCarBrand ? newCarBrand : selectedCar.carBrand),
+                carName: (newCarName ? newCarName : selectedCar.carName),
+                vehicle: (newVehicle ? newVehicle : selectedCar.vehicle),
+                carType: (newCarType ? newCarType : selectedCar.carType),
+                carEngineFuel: (newCarEngineFuel ? newCarEngineFuel : selectedCar.carEngineFuel),
+                carEnginePower: (newCarEnginePower ? newCarEnginePower : selectedCar.carEnginePower),
+                carDescription: (newCarDescription ? newCarDescription : selectedCar.carDescription),
+                carPhoto: (newCarPhoto ? newCarPhoto : selectedCar.carPhoto)
+            };
+        }
 
-        // userTrips.push(addNewTrip)
         const saveCar = {
             "cars" : userCars
         }
@@ -79,7 +94,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
                     </option>
                 ))}
             </select>
-            <p> Producent </p>
+            <p> Brand: </p>
             <section className="box-section">
                 <input
                     type="text"
@@ -88,7 +103,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
                     onChange={() => setNewCarBrand(event.target.value)}
                     placeholder= {selectedCar.carBrand}
                 />
-                <p> model </p>
+                <p> model: </p>
                 <input
                     type="text"
                     className="box_input"
@@ -99,7 +114,7 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
                 />
              </section>
             <section className="box-section box-section-row">
-                <p> for you</p>
+                <p> purpose:</p>
                 <select value={newCarType} onChange={() => setNewCarType(event.target.value)} className="fnt box_input_small">
                     {carsTypes.map((carType) => (
                         <option key={carType} value={carType} className="fnt">
@@ -136,8 +151,10 @@ function CarEdit({selectedCar, userCars, userId, API, setSectionSel}) {
                    />
             </section>
             <section className="div-accept">
-                <button onClick={() => saveData(userId, selectedCar.carId)} className="btn_save">Save</button>
-                <button  className="btn_delete">Delete</button>
+                <button onClick={() => saveData(userId, selectedCar.carId, false)} className="btn_save">Save</button>
+                <button onClick={() => saveData(userId, selectedCar.carId, true)} className="btn_delete">Delete</button>
+
+
                 {/*onClick={() => saveData(userId, selectedTrip.tripId, true)}*/}
 
                 <button onClick={() => setSectionSel(1)} className="btn_cancel">Cancel</button>

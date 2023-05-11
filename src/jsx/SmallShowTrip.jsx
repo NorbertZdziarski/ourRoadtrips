@@ -1,8 +1,30 @@
-import React from 'react';
+import {useState} from 'react';
 
-function SmallShowTrip({trip, i, selectCountry, choiceTripType, choiceCarType, choiceVehicleType}) {
+function SmallShowTrip({trip, i, selectCountry, choiceTripType, choiceCarType, choiceVehicleType, APIimg}) {
+    const [imageData, setImageData] = useState(null);
 
-
+    // useEffect(() => {
+    //     const fetchImage = async () => {
+    //         try {
+    //
+    //             const response = await fetch(`${APIimg}images/1`);
+    //
+    //             if (response.ok) {
+    //                 const data = await response.json();
+    //                 console.log('response: ')
+    //                 console.log(response)
+    //                 console.log(data)
+    //                 setImageData(data.image);
+    //             } else {
+    //                 console.log('Wystąpił błąd podczas pobierania zdjęcia.');
+    //             }
+    //         } catch (error) {
+    //             console.log('Wystąpił błąd podczas wysyłania żądania.');
+    //         }
+    //     };
+    //
+    //     fetchImage();
+    // }, []);
     function TripType({tripType}) {
         switch (tripType) {
             case "recreation":
@@ -12,7 +34,7 @@ function SmallShowTrip({trip, i, selectCountry, choiceTripType, choiceCarType, c
             case "extreme":
                 return <img src="../../warehouse/images/ico/flag-regular.svg" className="ico_smallShowTrip smallTrip_trip" alt="extreme"/>;
             default:
-                return <p>X</p>
+                return <p></p>
         }
     }
     function CarType(carType) {
@@ -34,17 +56,29 @@ function SmallShowTrip({trip, i, selectCountry, choiceTripType, choiceCarType, c
     function TripLikes() {
         return <img src="../../warehouse/images/ico/star-regular.svg" className="ico_smallShowTrip smallTrip_like" alt="extreme"/>;
     }
+   function UserNick({userNick}) {
+    return <div className=" smallTrip_nick" >by: {userNick} </div>;
+    }
+
+
+
     if (!trip.tripPublic) return;
 
     if (selectCountry !== "all" && selectCountry !== trip.tripCountry ) return;
     if (choiceTripType !== "all" && choiceTripType !== trip.tripType) return;
     if (choiceCarType !== "all" && choiceCarType !== trip.tripCar.carType) return;
     if (choiceVehicleType !== "all" && choiceVehicleType !== trip.tripCar.vehicle) return;
+
+    let indexNr = trip.tripKey.indexOf("T");
+    let userIndex = trip.tripKey.slice(0, indexNr);
+
+
     return (
         <div key={trip.tripKey} className="box-content ">
 
+            {(trip.tripPhoto ? <img src={`data:image/jpeg;base64,${trip.tripPhoto}`} className="smallBox_image" title="click for more"/> : <img src="../../warehouse/images/ico/noimage.jpg" className="smallBox_image" title="click for more"/>)}
 
-            <img src="../../warehouse/images/trips/bmw_bieszczady_trip.jpg" className="smallBox_image" title="click for more"/>
+
             <div className="box-content-column">
                 <p className="fnt_title">{trip.tripName}</p>
                 <p className="fnt sst_description"  >{trip.tripDescription.slice(0,80)}...</p>
@@ -56,7 +90,11 @@ function SmallShowTrip({trip, i, selectCountry, choiceTripType, choiceCarType, c
                     <CarType
                         carType = {trip.tripCar}
                     />
+                    <UserNick
+                        userNick = {trip.tripUserNick}
+                    />
                 </section>
+
                 <TripLikes/>
             </div>
 

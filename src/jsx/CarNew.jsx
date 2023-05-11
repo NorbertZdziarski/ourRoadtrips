@@ -96,7 +96,7 @@ function CarNew({userId, API, userCars, setSectionSel}) {
                 />
             </section>
             <section className="box-section box-section-row">
-                <p> for you</p>
+                <p>purpose:</p>
                 <select value={newCarType} onChange={() => setNewCarType(event.target.value)} className="fnt box_input_small">
                     {carsTypes.map((carType) => (
                         <option key={carType} value={carType} className="fnt">

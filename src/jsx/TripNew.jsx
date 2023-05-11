@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 
-function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) {
+function TripNew({userId, API, APIimg, userCars, userTrips, setAddTrip, setSectionSel, userNick, allTrips}) {
+
+    let saveUserCar = {};
 
     const countriesInEurope = ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"];
     const tripTypes = ["recreation", "sightseeing", "extreme"];
@@ -11,32 +13,77 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) 
     const [newTripCountry, setNewTripCountry] = useState('');
     const [newTripCar, setNewTripCar] = useState('');
     const [newTripPhoto, setNewTripPhoto] = useState('');
+    const [selectedImage, setSelectedImage] = useState(null);
+    const handleImageUpload = async () => {
+        if (!selectedImage) {
+            console.log('Nie wybrano zdjęcia.');
+            return;
+        }
 
+        try {
+            const reader = new FileReader();
+            reader.readAsDataURL(selectedImage);
 
-    // function checkCorrect() {
-    //
-    // }
+            reader.onloadend = async () => {
+                const base64Data = reader.result.split(',')[1];
+
+                const imageData = {
+                    tripKey: selectedTrip.tripKey,
+                    userId: userId,
+                    image: base64Data,
+                };
+
+                try {
+                    const response = await fetch(`${APIimg}images`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(imageData),
+                    });
+
+                    if (response.ok) {
+                        console.log('Zdjęcie zostało zapisane na serwerze.');
+                    } else {
+                        console.log('Wystąpił błąd podczas zapisywania zdjęcia.');
+                    }
+                } catch (error) {
+                    console.log('Wystąpił błąd podczas wysyłania żądania.');
+                }
+            };
+        } catch (error) {
+            console.log('Wystąpił błąd podczas przetwarzania zdjęcia.');
+        }
+    };
 
     function handleAddTrip(userId, userTrips) {
-        let temporaryTripKey = userId + 'T' + (userTrips.length)
-        // if (newPassword === newPasswordChk) {
+
+        userCars.map((userCar) => {
+            if (userCar.carKey === newTripCar) saveUserCar = userCar;
+        })
+
+
+
+        let temporaryTripKey = userId + 'T' + (userTrips.length);
             const addNewTrip = {
                 tripId: (userTrips.length),
                 tripKey: temporaryTripKey,
+                tripUserNick: userNick,
                 tripName: newTripName,
                 tripDescription: newTripDescription ,
                 tripType: newTripType,
                 tripCountry: newTripCountry,
-                tripCar: newTripCar,
-                tripPhoto: newTripPhoto,
+                tripCar: saveUserCar,
                 tripLikes: [],
-                tripPublic: true
+                tripPublic: true,
+                tripPhoto: newTripPhoto,
             }
-
             userTrips.push(addNewTrip)
             const saveNewTrip = {
                     "trips" : userTrips
             }
+
+            allTrips.push(addNewTrip)
 
             fetch(`${API}/profile/${userId}`
                 , {
@@ -49,14 +96,21 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) 
                 })
                 .then(response => response.json())
                 .then(data => {
+
+
+
                     console.log(data);
                 })
                 .catch(error => {
                     console.log(error);
                 });
-        // }
+
+        handleImageUpload();
         setSectionSel(1);
     }
+    const handleImageChange = (event) => {
+        setSelectedImage(event.target.files[0]);
+    };
 
     return (
         <div className="newAccount_main fnt_userpanel">
@@ -109,17 +163,16 @@ function TripNew({userId, API, userCars, userTrips, setAddTrip, setSectionSel}) 
                         <p>choose a vehicle</p>
                         <select value={newTripCar} onChange={() => setNewTripCar(event.target.value)} className="fnt box_input_trip">
                             {userCars.map((userCar) => (
-                                <option key={userCar.carKey} value={userCar.carBrand} className="fnt">
-                                    {userCar.carBrand}
+                                <option key={userCar.carKey} value={userCar.carKey} className="fnt">
+                                    {userCar.carBrand} {userCar.carName}
                                 </option>
                             ))}
                         </select>
                     </div>
                 </section>
-                <section className="box-section under_construction">
+                <section className="box-section">
                     <p>add trip photo</p>
-                {/*    <input type="file" onChange={handleFileChange} />*/}
-                {/*    <button onClick={handleUpload} className="btn_cancel">Upload</button>*/}
+                    <input type="file" onChange={handleImageChange} />
                 </section>
                 <section className="div-accept">
 

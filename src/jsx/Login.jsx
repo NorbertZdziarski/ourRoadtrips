@@ -78,6 +78,7 @@ function Login({API}) {
         <>
 
             {loggedIn ? (<MainPage
+                userNickLog = {loggedUser.nick}
                 userNameLog = {loggedUser.name}
                 userSurnameLog = {loggedUser.surname}
                 userPasswordLog = {loggedUser.password}
