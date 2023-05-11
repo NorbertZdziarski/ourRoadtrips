@@ -74,7 +74,7 @@ function SmallShowTrip({trip, i, selectCountry, choiceTripType, choiceCarType, c
 
 
     return (
-        <div key={trip.tripKey} className="box-content ">
+        <div key={trip.tripKey} className="box-content box-smallShowTrip ">
 
             {(trip.tripPhoto ? <img src={`data:image/jpeg;base64,${trip.tripPhoto}`} className="smallBox_image" title="click for more"/> : <img src="../../warehouse/images/ico/noimage.jpg" className="smallBox_image" title="click for more"/>)}
 

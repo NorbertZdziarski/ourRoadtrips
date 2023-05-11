@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 
-function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel, userNick, allTrips}) {
+function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel, userNick, allTrips, setUpdateAllTrips}) {
     let saveUserCar = {};
     let base64Data;
     const countriesInEurope = ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"];
@@ -25,6 +25,7 @@ function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel
         userCars.map((userCar) => {
             if (userCar.carKey === newTripCar) saveUserCar = userCar;
         })
+
 
         if (!selectedImage) {
             base64Data = selectedTrip.tripPhoto
@@ -84,6 +85,7 @@ function TripEdit({selectedTrip, userTrips, userCars, userId, API, setSectionSel
                 allTrips.forEach((index, obj) => {
                     if (obj.tripKey === selectedTrip.tripKey) {allTrips[index] = {...selectedTrip}}
                 })
+                setUpdateAllTrips(allTrips)
 
 
                 try {

@@ -1,14 +1,19 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import CarNew from "./CarNew.jsx";
 import CarEdit from "./CarEdit.jsx";
 import TripEdit from "./TripEdit.jsx";
 
 
-function ShowUserTripsCars({userCars, userTrips, userId, API, userNick, allTrips}) {
+function ShowUserTripsCars({userCars, userTrips, userId, API, userNick, allTrips, setUpdateAllTrips2}) {
     const [sectionSel, setSectionSel] = useState(1);
     const [selectedTrip, setSelectedTrip] = useState('');
     const [selectedCar, setSelectedCar] = useState('');
+    const [updateAllTrips, setUpdateAllTrips] = useState('');
 
+    useEffect(() => {
+        allTrips = [...updateAllTrips]
+        setUpdateAllTrips2(updateAllTrips)
+    },[updateAllTrips])
     function chooseATrip(value) {
         setSelectedTrip(value)
         setSectionSel(2)
@@ -70,6 +75,7 @@ function ShowUserTripsCars({userCars, userTrips, userId, API, userNick, allTrips
                     setSectionSel={setSectionSel}
                     userNick ={userNick}
                     allTrips = {allTrips}
+                    setUpdateAllTrips = {setUpdateAllTrips}
                 />;
             case 3:
                 return <CarNew

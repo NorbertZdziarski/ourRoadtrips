@@ -105,7 +105,7 @@ function TripNew({userId, API, APIimg, userCars, userTrips, setAddTrip, setSecti
                     console.log(error);
                 });
 
-        handleImageUpload();
+        // handleImageUpload();
         setSectionSel(1);
     }
     const handleImageChange = (event) => {

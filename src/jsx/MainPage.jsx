@@ -30,11 +30,20 @@ function MainPage({userNickLog, userNameLog, userSurnameLog, userPasswordLog, us
     const [choiceVehicleType, setChoiceVehicleType] = useState("all")
     const [choiceCarType, setChoiceCarType] = useState("all")
     const [usersPhotos, setUsersPhotos] = useState([]);
+    const [updateAllTrips3, setUpdateAllTrips3] = useState('');
+
+
 
 
     useEffect(()=>{
         getAllPhotos();
     },[])
+
+    useEffect(() => {
+        allTrips = [...updateAllTrips3]
+        console.log(updateAllTrips3)
+    },[updateAllTrips3])
+
     const getAllPhotos = () => {
         fetch(`${APIimg}images`)
             .then(response => response.json())
@@ -49,13 +58,12 @@ function MainPage({userNickLog, userNameLog, userSurnameLog, userPasswordLog, us
 
 
     function showTripLook({trip}) {
-
         setChooseTrip(trip)
         setChoosePage(5)
-
     }
 
     const PrintMainPage = ({selectCountry, choiceCarType, choiceTripType, choiceVehicleType }) => {
+
         return (
             <div className="mainPageDiv">
                 <div className="mainPageStyle" >
@@ -152,7 +160,7 @@ function MainPage({userNickLog, userNameLog, userSurnameLog, userPasswordLog, us
                 </>)
             case 3:
                 return <UserPanel
-
+                    setUpdateAllTrips3 = {setUpdateAllTrips3}
                     userName = {userNameLog}
                     userSurname = {userSurnameLog}
                     userPassword = {userPasswordLog}
@@ -171,21 +179,6 @@ function MainPage({userNickLog, userNameLog, userSurnameLog, userPasswordLog, us
                 setLoggedInLogin(false);
                 return
 
-
-                // (<User>
-                //     {userNameLog}
-                //     <button onClick={(()=>setLoggedIn(true))} className="mainMenu__button"></button>
-                // </User>);
-                // return <TripLook
-                //     trip={chooseTtip}
-                // />
-
-                // <CarNew
-                //     userId={usersId}
-                //     API={API}
-                //     userCars={userCars}
-                //     // setSectionSel={setSectionSel}
-                // />;
             case 5:
             return <TripLook
                 trip={chooseTtip}

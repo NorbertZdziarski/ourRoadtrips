@@ -1,14 +1,19 @@
 import EditUser from "./EditUser.jsx";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import TripNew from "./TripNew.jsx";
 import CarNew from "./CarNew.jsx";
 import ShowUserTripsCars from "./ShowUserTripsCars.jsx";
 
 
-function UserPanel({userName, userNick, userSurname, userPassword, userCars, userTrips, usersId, API, setUserName, setUserSurname, allTrips}) {
+function UserPanel({userName, userNick, userSurname, userPassword, userCars, userTrips, usersId, API, setUserName, setUserSurname, allTrips, setUpdateAllTrips3}) {
 
     const [sectionSel, setSectionSel] = useState(1)
+    const [updateAllTrips2, setUpdateAllTrips2] = useState('');
 
+    useEffect(() => {
+        allTrips = [...updateAllTrips2]
+        setUpdateAllTrips3(updateAllTrips2)
+    },[updateAllTrips2])
     function SectionSelection({value}) {
 
         switch (value) {
@@ -21,6 +26,7 @@ function UserPanel({userName, userNick, userSurname, userPassword, userCars, use
                     setSectionSel={setSectionSel}
                     userNick = {userNick}
                     allTrips = {allTrips}
+                    setUpdateAllTrips2 = {setUpdateAllTrips2}
                 />;
             case 2:
                 return <TripNew
