@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import '../scss/main.scss'
 import MainPage from "./MainPage.jsx";
 import NewAccount from "./NewAccount.jsx";
@@ -17,7 +17,7 @@ function Login({API}) {
 
     useEffect(()=>{
         getAllUsers();
-    },[])
+    },[loggedInLogin])
 
     const getAllUsers = () => {
         fetch(`${API}/profile`)
@@ -68,10 +68,7 @@ function Login({API}) {
         setNewUser("")
         setNewPassword("")
         setLoggedInNA(true)
-        // return <NewAccount
-        //     API={API}
-        //     setLoggedIn = {setLoggedIn}
-        //     />
+
     }
 
     return (
@@ -94,8 +91,10 @@ function Login({API}) {
             />) : '' }
             {loggedInNA ? <NewAccount
                 API={API}
+                setLoggedIn = {setLoggedIn}
                 setLoggedInNA = {setLoggedInNA}
                 setLoggedInLogin = {setLoggedInLogin}
+
             /> : ''}
             {loggedInLogin ? '' :
             <div className="login_main_div">

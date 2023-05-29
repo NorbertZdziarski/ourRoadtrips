@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function NewAccount({API, setLoggedInNA, setLoggedInLogin}) {
+function NewAccount({API, setLoggedInNA, setLoggedInLogin, setLoggedIn}) {
     const [newNick, setNewNick] = useState('');
     const [newName, setNewName] = useState('');
     const [newSurname, setNewSurname] = useState('');
@@ -47,6 +47,7 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin}) {
                 });
             setLoggedInLogin(false);
             setLoggedInNA(false);
+            setLoggedIn(false);
         } else {
             setNewAnnouncement('! wrong password or username !') }
     }
@@ -54,6 +55,7 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin}) {
     function cancel() {
         setLoggedInLogin(false);
         setLoggedInNA(false);
+
     }
 
 
