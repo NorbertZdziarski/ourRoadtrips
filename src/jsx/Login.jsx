@@ -6,8 +6,10 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider } from "firebase/auth";
 import {  signInWithPopup } from "firebase/auth";
-
-
+import { getDatabase } from "firebase/database";
+// import data from "@react-google-maps/api/src/components/drawing/Data.js";
+import { ref, set } from "firebase/database";
+import { child, get } from "firebase/database";
 
 function Login({API}) {
 
@@ -15,7 +17,7 @@ function Login({API}) {
     const firebaseConfig = {
         apiKey: "AIzaSyCFuyx_Ik4TUpQk7VDc6yOWZdYZkhuMfPQ",
         authDomain: "ourroadtrips-a2b30.firebaseapp.com",
-        databaseURL: "https://ourroadtrips-a2b30-default-rtdb.europe-west1.firebasedatabase.app",
+        databaseURL: "https://ourroadtrips-a2b30-default-rtdb.europe-west1.firebasedatabase.app/",
         projectId: "ourroadtrips-a2b30",
         storageBucket: "ourroadtrips-a2b30.appspot.com",
         messagingSenderId: "59896103796",
@@ -24,8 +26,24 @@ function Login({API}) {
     };
 
     const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
 
-    const [databas, setDatabas] = useState([]);
+
+
+
+
+
+    function writeUserData(userId, name, email, imageUrl) {
+        const db = getDatabase();
+        console.log("write User Data")
+        set(ref(db, 'profile/' + userId), {
+            username: name,
+            email: email,
+            profile_picture : imageUrl
+        });
+    }
+
+    // const [databas, setDatabas] = useState([]);
     const [loggedUser, setLoggedUser]  = useState('')
     const [newUser, setNewUser] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -34,33 +52,59 @@ function Login({API}) {
     const [loggedInLogin, setLoggedInLogin] = useState(false);
     const [newAnnouncement, setNewAnnouncement] = useState("")
     const auth = getAuth();
+    let databaseTrips = [];
+    const databas = [];
 
     useEffect(()=>{
         getAllUsers();
     },[loggedInLogin])
 
     const getAllUsers = () => {
-        fetch(`${API}/profile`)
-            .then(response => response.json())
-            .then(data => {
-                setDatabas(data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
 
-    let databaseTrips = [];
+        const dbRef = ref(getDatabase());
 
-    for (let i = 0; i < databas.length; i++) {
-        let tablica = databas[i].trips
-        if (tablica.length > 0) {
-            for (let j = 0; j < tablica.length; j++) {
+        get(child(dbRef, 'profile')).then((snapshot) => {
 
-                databaseTrips.push(tablica[j])
+            if (snapshot.exists()) {
+                let bazadanych = [...snapshot.val()]
+                    bazadanych.map((dane) => {
+                    databas.push(dane)
+                    });
+
+
+
+                console.log('trasy')
+                for (let i = 0; i < databas.length; i++) {
+                    let tablica = databas[i].trips
+
+                    if (tablica.length > 0) {
+                        for (let j = 0; j < tablica.length; j++) {
+                            // console.log(tablica[j])
+                            databaseTrips.push(tablica[j])
+                        }
+                    }
+                }
+
+            } else {
+                console.log("No data available");
             }
-        }
+        }).catch((error) => {
+
+            console.error(error);
+        });
+
+
+        // fetch(`${API}/profile`)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         setDatabas(data);
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
     }
+
     function googleLogin() {
 
 
@@ -73,6 +117,9 @@ function Login({API}) {
                 // The signed-in user info.
                 const user = result.user;
                 // IdP data available using getAdditionalUserInfo(result)
+                        // console.log('ZAPIS danych')
+                        // writeUserData(token, "Ala", "email@aa.pl", "image U R L")
+                        // console.log("zapisane???")
                 setLoggedUser(user)
                 setLoggedIn(true)
                 setLoggedInLogin(true);
@@ -136,6 +183,10 @@ function Login({API}) {
 
     }
 
+    // userCars = {loggedUser.cars}
+    // userTrips = {loggedUser.trips}
+
+
     return (
         <>
 
@@ -144,8 +195,8 @@ function Login({API}) {
                 userNameLog = {loggedUser.name}
                 userSurnameLog = {loggedUser.surname}
                 userPasswordLog = {loggedUser.password}
-                userCars = {loggedUser.cars}
-                userTrips = {loggedUser.trips}
+                userCars = {[]}
+                userTrips = {[]}
                 usersId={loggedUser.id}
                 API = {API}
                 allTrips = {databaseTrips}

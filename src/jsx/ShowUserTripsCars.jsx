@@ -36,7 +36,6 @@ function ShowUserTripsCars({userCars, userTrips, userId, API, userNick, allTrips
         </div>
     }
 
-    // event.target.parentElement.firstChild.data
 
     function Show(){
         return  (

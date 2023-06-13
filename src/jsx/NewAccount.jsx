@@ -83,7 +83,7 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin, setLoggedIn}) {
             // setLoggedInLogin(false);
             // setLoggedInNA(false);
             // setLoggedIn(false);
-        } else {
+        } else { setNewAnnouncement('błąd logowania !')
              }
     }
 

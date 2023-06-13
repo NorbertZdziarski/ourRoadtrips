@@ -10,7 +10,7 @@ function App() {
     // const [slideShow, setSlideShow] = useState(false);
 
 
-    const API = "http://localhost:3022";
+    const API = "https://ourroadtrips-a2b30-default-rtdb.europe-west1.firebasedatabase.app/";
     // const [photoGallery, setPhotoFallery] = useState([
     //     "../warehouse/images/slideshow/bgr_bmw.jpg",
     //     "../warehouse/images/slideshow/Mazda3_turbo_4x4.jpg",

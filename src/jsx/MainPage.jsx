@@ -14,7 +14,10 @@ import CarNew from "./CarNew.jsx";
 
 function MainPage({userNickLog, userNameLog, userSurnameLog, userPasswordLog, userCars, userTrips, usersId, API, allTrips, setLoggedInMain, setLoggedUser, setLoggedInLogin}) {
 
-    const APIimg = "http://localhost:3000/";
+    console.log('MAIN PAGE')
+
+
+    const APIimg = "https://ourroadtrips-a2b30-default-rtdb.europe-west1.firebasedatabase.app/";
 
     const countriesInEurope = ["all", "Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"];
     const tripTypes = ["all", "recreation", "sightseeing", "extreme"];
@@ -35,25 +38,24 @@ function MainPage({userNickLog, userNameLog, userSurnameLog, userPasswordLog, us
 
 
 
-    useEffect(()=>{
-        getAllPhotos();
-    },[])
+    // useEffect(()=>{
+    //     getAllPhotos();
+    // },[])
 
     useEffect(() => {
         allTrips = [...updateAllTrips3]
-        console.log(updateAllTrips3)
     },[updateAllTrips3])
 
-    const getAllPhotos = () => {
-        fetch(`${APIimg}images`)
-            .then(response => response.json())
-            .then(data => {
-                setUsersPhotos(data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
+    // const getAllPhotos = () => {
+    //     fetch(`${APIimg}images`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setUsersPhotos(data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         });
+    // }
 
 
 
@@ -63,7 +65,7 @@ function MainPage({userNickLog, userNameLog, userSurnameLog, userPasswordLog, us
     }
 
     const PrintMainPage = ({selectCountry, choiceCarType, choiceTripType, choiceVehicleType }) => {
-
+        console.log("print main page")
         return (
             <div className="mainPageDiv">
                 <div className="mainPageStyle" >

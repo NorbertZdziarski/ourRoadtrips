@@ -2,7 +2,7 @@ import {useState} from 'react';
 
 function SmallShowTrip({trip, i, selectCountry, choiceTripType, choiceCarType, choiceVehicleType, APIimg}) {
     const [imageData, setImageData] = useState(null);
-
+    console.log("Small Show Trip")
     // useEffect(() => {
     //     const fetchImage = async () => {
     //         try {
@@ -38,20 +38,20 @@ function SmallShowTrip({trip, i, selectCountry, choiceTripType, choiceCarType, c
         }
     }
     function CarType(carType) {
-        console.log(carType.carType)
-        console.log(carType.carType.vehicle)
-        switch (carType.carType.vehicle) {
-            case "car":
-                return <img src="../../warehouse/images/ico/car-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="car" title="car"/>
-            case "bike":
-                return <img src="../../warehouse/images/ico/motorcycle-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="motorcycle"/>;
-            case "4x4":
-                return <img src="../../warehouse/images/ico/truck-monster-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="off roader"/>;
-            case "camper":
-                return <img src="../../warehouse/images/ico/van-shuttle-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="camper"/>;
-            default:
-                return <img src="../../warehouse/images/ico/screwdriver-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="error"/>
-        }
+        // console.log(carType.carType)
+        // console.log(carType.carType.vehicle)
+        // switch (carType.carType.vehicle) {
+        //     case "car":
+        //         return <img src="../../warehouse/images/ico/car-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="car" title="car"/>
+        //     case "bike":
+        //         return <img src="../../warehouse/images/ico/motorcycle-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="motorcycle"/>;
+        //     case "4x4":
+        //         return <img src="../../warehouse/images/ico/truck-monster-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="off roader"/>;
+        //     case "camper":
+        //         return <img src="../../warehouse/images/ico/van-shuttle-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="camper"/>;
+        //     default:
+        //         return <img src="../../warehouse/images/ico/screwdriver-solid.svg" className="ico_smallShowTrip smallTrip_car" alt="error"/>
+        // }
     }
     function TripLikes() {
         return <img src="../../warehouse/images/ico/star-regular.svg" className="ico_smallShowTrip smallTrip_like" alt="extreme"/>;
