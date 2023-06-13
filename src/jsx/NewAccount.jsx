@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {createUserWithEmailAndPassword, getAuth} from "firebase/auth";
+
 
 function NewAccount({API, setLoggedInNA, setLoggedInLogin, setLoggedIn}) {
     const [newNick, setNewNick] = useState('');
@@ -9,47 +11,80 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin, setLoggedIn}) {
     const [termsAndConditions, setTermsAndConditions] = useState(false)
     const [newAnnouncement, setNewAnnouncement] = useState("")
 
-    // function checkCorrect() {
-    //
-    // }
-    console.log(' NEW ACCOUNT')
+
     setLoggedInLogin(true);
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCFuyx_Ik4TUpQk7VDc6yOWZdYZkhuMfPQ",
+        authDomain: "ourroadtrips-a2b30.firebaseapp.com",
+        databaseURL: "https://ourroadtrips-a2b30-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "ourroadtrips-a2b30",
+        storageBucket: "ourroadtrips-a2b30.appspot.com",
+        messagingSenderId: "59896103796",
+        appId: "1:59896103796:web:98f63b8754c102dbe66221",
+        measurementId: "G-H7VQVJZK5B"
+    };
+
+
+
+
     function handleAddUser() {
         if (!termsAndConditions) {
             setNewAnnouncement('please accept the terms and conditions.')
             return;
         }
         if (newPassword === newPasswordChk) {
-            const dane = {
-                name: newName,
-                nick: newNick,
-                surname: newSurname,
-                password: newPassword,
-                cars: [],
-                trips: []
-            }
-            fetch(`${API}/profile`
-                , {
-                    method: "POST"
-                    ,
-                    body: JSON.stringify(dane),
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
 
-                    console.log(data);
+
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, newNick, newPassword)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    // ...
+                    setLoggedInLogin(false);
+                    setLoggedInNA(false);
+                    setLoggedIn(false);
                 })
-                .catch(error => {
-                    console.log(error);
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setNewAnnouncement(errorMessage)
+                    // ..
                 });
-            setLoggedInLogin(false);
-            setLoggedInNA(false);
-            setLoggedIn(false);
+
+
+
+            // const dane = {
+            //     name: newName,
+            //     nick: newNick,
+            //     surname: newSurname,
+            //     password: newPassword,
+            //     cars: [],
+            //     trips: []
+            // }
+            // fetch(`${API}/profile`
+            //     , {
+            //         method: "POST"
+            //         ,
+            //         body: JSON.stringify(dane),
+            //         headers: {
+            //             "Content-Type": "application/json"
+            //         }
+            //     })
+            //     .then(response => response.json())
+            //     .then(data => {
+            //
+            //         console.log(data);
+            //     })
+            //     .catch(error => {
+            //         console.log(error);
+            //     });
+            // setLoggedInLogin(false);
+            // setLoggedInNA(false);
+            // setLoggedIn(false);
         } else {
-            setNewAnnouncement('! wrong password or username !') }
+             }
     }
 
     function cancel() {
@@ -86,7 +121,7 @@ function NewAccount({API, setLoggedInNA, setLoggedInLogin, setLoggedIn}) {
                 </div>
                 <div>
                     <label>
-                        <p>Enter your nick</p>
+                        <p>Enter your email</p>
                         <input
                             type="text"
                             className="box_input"
